@@ -28,8 +28,8 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Our Lodges", href: "/our-lodges" },
-    { name: "Amenities", href: "/amenities" },
-    { name: "Activities", href: "/activities" },
+    // { name: "Amenities", href: "/amenities" },
+    // { name: "Activities", href: "/activities" },
     { name: "Gallery", href: "/gallery" },
     { name: "Contact", href: "/contact" },
   ]

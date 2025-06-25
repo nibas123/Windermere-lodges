@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'windermere-lodges',
-  description: 'Created with AI',
+  title: 'Windermere Lodges',
+  description: 'Created by coffee_coders',
   generator: 'Ketan Kumar Shrivastava',
 }
 

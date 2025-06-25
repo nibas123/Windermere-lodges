@@ -1,15 +1,16 @@
  Create Booking forms to showcase the complete flow
 
-1. Hero Sections
+1. Hero Sections - HERO TOBE SORTED LATER
     --> create the component for the Hero Sections
     --> 
 
-2. Find Your Perfect Lodge
+2. Find Your Perfect Lodge - DONE
     --> add properties
     
-3. Our Featured Lodegs
+3. Our Featured Lodegs - DONE
     --> Fine tune the names of the properties
     --> remove View All Lodges
+    --> Detailed Property Page
 
 4. Lodge Amenities
     --> This is Fine
@@ -18,7 +19,7 @@
     --> We need to find the solutions
     --> Only Image Cards for the activities
 
-6. Testimonials 
+6. Testimonials - DONE
     --> We need a carousel for this
 
 

@@ -10,32 +10,50 @@ import { Badge } from '@/components/ui/badge'
 const activities = [
   {
     title: "Lake Cruises",
-    description: "Explore the beauty of Lake Windermere with scenic boat tours",
     image: "https://images.unsplash.com/photo-1516132006923-6cf348e5dee2?q=80&w=2070&auto=format&fit=crop",
-    location: "Bowness Bay",
-    season: "Year-round",
-    duration: "2-3 hours",
-    difficulty: "Easy"
   },
   {
     title: "Hiking Trails",
-    description: "Discover breathtaking views on the region's most scenic trails",
     image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-    location: "Various locations",
-    season: "Spring-Autumn",
-    duration: "3-6 hours",
-    difficulty: "Moderate"
   },
   {
     title: "Water Sports",
-    description: "Try kayaking, paddleboarding, and other exciting water activities",
     image: "https://images.unsplash.com/photo-1530866495561-507c9faab2ed?q=80&w=2070&auto=format&fit=crop",
-    location: "Windermere Lake",
-    season: "Summer",
-    duration: "1-2 hours",
-    difficulty: "Easy"
+  },
+  {
+    title: "Water Sports",
+    image: "activities/4.png",
   },
 ]
+// const activities = [
+//   {
+//     title: "Lake Cruises",
+//     description: "Explore the beauty of Lake Windermere with scenic boat tours",
+//     image: "https://images.unsplash.com/photo-1516132006923-6cf348e5dee2?q=80&w=2070&auto=format&fit=crop",
+//     location: "Bowness Bay",
+//     season: "Year-round",
+//     duration: "2-3 hours",
+//     difficulty: "Easy"
+//   },
+//   {
+//     title: "Hiking Trails",
+//     description: "Discover breathtaking views on the region's most scenic trails",
+//     image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
+//     location: "Various locations",
+//     season: "Spring-Autumn",
+//     duration: "3-6 hours",
+//     difficulty: "Moderate"
+//   },
+//   {
+//     title: "Water Sports",
+//     description: "Try kayaking, paddleboarding, and other exciting water activities",
+//     image: "https://images.unsplash.com/photo-1530866495561-507c9faab2ed?q=80&w=2070&auto=format&fit=crop",
+//     location: "Windermere Lake",
+//     season: "Summer",
+//     duration: "1-2 hours",
+//     difficulty: "Easy"
+//   },
+// ]
 
 export const Activities = () => {
   return (
@@ -48,7 +66,19 @@ export const Activities = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {activities.map((activity, index) => (
+            <Card key={index} className="overflow-hidden border-0 shadow-lg group relative cursor-pointer">
+              <div className="relative h-64">
+                <Image src={activity.image || "/placeholder.svg"} alt={activity.title} fill className="object-cover transition-transform duration-300 group-hover:scale-105" />
+                <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="w-full text-white text-2xl font-bold p-6 text-center">{activity.title}</span>
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
+        {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {activities.map((activity, index) => (
             <Card key={index} className="overflow-hidden border-0 shadow-lg">
               <div className="relative h-48">
@@ -87,15 +117,15 @@ export const Activities = () => {
               </CardContent>
             </Card>
           ))}
-        </div>
+        </div> */}
 
-        <div className="text-center mt-12">
+        {/* <div className="text-center mt-12">
           <Link href="/activities">
             <Button className="bg-emerald-600 hover:bg-emerald-700">
               View All Activities <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   )

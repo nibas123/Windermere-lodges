@@ -15,11 +15,12 @@ export default function OurLodgesPage() {
       />
 
       <section className="py-16">
-        <div className="container justify-evenly mx-auto px-4">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-row">
             <LodgeList />
+          </div>
         </div>
       </section>
-
       <Footer />
       <ChatbotButton />
     </main>

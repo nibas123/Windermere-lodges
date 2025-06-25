@@ -1,18 +1,10 @@
 "use client"
 
-import React from "react"
-import Image from "next/image"
+import { useEffect, useRef } from "react"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Star } from "lucide-react"
+import gsap from "gsap"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
-import Autoplay from "embla-carousel-autoplay"
 
 const testimonials = [
   {
@@ -58,55 +50,74 @@ const testimonials = [
 ]
 
 export const Testimonials = () => {
-  const plugin = React.useRef(
-    Autoplay({ delay: 4000, stopOnInteraction: true })
-  )
+  const sliderRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!sliderRef.current) return;
+
+    const slider = sliderRef.current;
+    const testimonialCards = slider.querySelectorAll(".testimonial-card");
+    if (testimonialCards.length === 0) return;
+
+    const totalWidth = Array.from(testimonialCards).reduce(
+      (width, card) => width + (card as HTMLElement).offsetWidth + 24,
+      0
+    );
+
+    const clones = Array.from(testimonialCards).map((card) => card.cloneNode(true));
+    clones.forEach((clone) => slider.appendChild(clone));
+
+    const animation = gsap.to(slider, {
+      x: -totalWidth,
+      duration: 30,
+      ease: "linear",
+      repeat: -1,
+    });
+
+    const pauseAnimation = () => animation.pause();
+    const resumeAnimation = () => animation.resume();
+
+    slider.addEventListener("mouseenter", pauseAnimation);
+    slider.addEventListener("mouseleave", resumeAnimation);
+
+    return () => {
+      slider.removeEventListener("mouseenter", pauseAnimation);
+      slider.removeEventListener("mouseleave", resumeAnimation);
+      animation.kill();
+    };
+  }, []);
 
   return (
     <section className="py-16 bg-white">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">Guest Testimonials</h2>
-        <Carousel
-          plugins={[plugin.current]}
-          onMouseEnter={plugin.current.stop}
-          onMouseLeave={plugin.current.reset}
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          className="w-full"
-        >
-          <CarouselContent>
-            {testimonials.map((testimonial, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                <div className="p-1 h-full">
-                  <Card className="h-full items-center flex flex-col">
-                    <CardHeader className="flex flex-row items-center gap-4">
-                      <Avatar>
-                        <AvatarImage src={testimonial.image} alt={testimonial.name} />
-                        <AvatarFallback>{testimonial.name[0]}</AvatarFallback>
-                      </Avatar>
-                      <div>
-                        <h3 className="font-semibold">{testimonial.name}</h3>
-                        <p className="text-sm text-gray-500">{testimonial.location}</p>
-                      </div>
-                    </CardHeader>
-                    <CardContent className="flex flex-col flex-grow">
-                      <div className="flex mb-2">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                        ))}
-                      </div>
-                      <p className="text-gray-600 italic flex-grow">"{testimonial.text}"</p>
-                    </CardContent>
-                  </Card>
+      <div className="container mx-auto px-4 overflow-hidden">
+        <h2 className="text-3xl font-bold text-center mb-8">Guest Testimonials</h2>
+        <div ref={sliderRef} className="flex gap-6">
+          {testimonials.map((testimonial) => (
+            <Card
+              key={testimonial.id}
+              className="testimonial-card flex-shrink-0 w-[350px]"
+            >
+              <CardHeader className="flex flex-row items-center gap-4 p-4">
+                <Avatar className="h-12 w-12">
+                  <AvatarImage src={testimonial.image} alt={testimonial.name} />
+                  <AvatarFallback>{testimonial.name[0]}</AvatarFallback>
+                </Avatar>
+                <div>
+                  <h3 className="font-semibold">{testimonial.name}</h3>
+                  <p className="text-sm text-gray-500">{testimonial.location}</p>
                 </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
+              </CardHeader>
+              <CardContent className="p-4 pt-0">
+                <div className="flex mb-2">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" />
+                  ))}
+                </div>
+                <p className="text-gray-600">{testimonial.text}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </div>
     </section>
   )

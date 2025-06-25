@@ -11,46 +11,37 @@ const lodges = [
   {
     id: 1,
     name: "Glenridding Lodge",
-    // description: "A stunning lodge with panoramic lake views and private hot tub",
     description: "Grasmere 2, White Cross Bay near Windermere, Cumbria & The Lake District (Ref. 1068867)",
     image: "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?q=80&w=2070&auto=format&fit=crop",
     price: 250,
-    rating: 4.9,
+    rating: 4.5,
     capacity: 4,
-    bedrooms: 2,
-    bathrooms: 3,
     size: 120,
-    features: ["Off road parking", "Garden / Patio", "Cot available", "+3"],
-    isNew: true,
+    features: ["Off Road Parking", "Garden / Patio", "Cot Available", "Highchair Available", "+3"],
+    isNew: false,
   },
   {
     id: 2,
     name: "Water's Reach",
-    // description: "Secluded woodland lodge surrounded by ancient trees and wildlife",
     description: "White Cross Bay Holiday Park near Troutbeck Bridge, Cumbria & The Lake District (Ref. 1172323)",
     image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=2070&auto=format&fit=crop",
     price: 195,
     rating: 4.7,
-    capacity: 2,
-    bedrooms: 2,
-    bathrooms: 3,
+    capacity: 6,
     size: 90,
-    features: ["Swimming pool", "Cot available", "Highchair available", "+3"],
+    features: ["Swimming pool", "Ground floor accommodation", "Ground floor bedroom", "+7"],
     isNew: false,
   },
   {
     id: 3,
     name: "Serenity",
-    // description: "Elevated position with breathtaking mountain and valley views",
     description: "Skiptory Howe 10, White Cross Bay near Windermere, Cumbria & The Lake District (Ref. 1172347)",
     image: "https://images.unsplash.com/photo-1542718610-a1d656d1884c?q=80&w=2070&auto=format&fit=crop",
     price: 275,
-    rating: 4.8,
+    rating: 4.1,
     capacity: 6,
-    bedrooms: 3,
-    batahrooms: 2,
-    size: 20,
-    features: ["Off road parking", "Ground floor accommodation", "+3"],
+    size: 150,
+    features: ["Ground floor accommodation", "Ground floor bedroom", "Off Road Parking", "Garden / Patio", "+4"],
     isNew: false,
   },
 ]
@@ -78,7 +69,7 @@ export const FeaturedLodges = () => {
                 {lodge.isNew && (
                   <Badge className="absolute top-4 left-4 bg-emerald-600 hover:bg-emerald-700">New</Badge>
                 )}
-                <div className="absolute bottom-4 left-4 flex items-center bg-white bg-opacity-90 px-2 py-1 rounded-full">
+                <div className="absolute bottom-4 left-4 flex items-center bg-white bg-opacity-80 px-2 py-1 rounded-full">
                   <Star className="h-4 w-4 text-yellow-500 mr-1" fill="currentColor" />
                   <span className="text-sm font-medium">{lodge.rating}</span>
                 </div>
@@ -117,7 +108,7 @@ export const FeaturedLodges = () => {
               </CardContent>
 
               <CardFooter className="flex justify-between pt-0">
-                <Link href={`/our-lodges/${lodge.id}`} passHref>
+                <Link href={`/our-lodges/${lodge.id}`}>
                   <Button variant="outline" className="border-emerald-600 text-emerald-600 hover:bg-emerald-50">
                     View Details
                   </Button>
