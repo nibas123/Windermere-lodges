@@ -2,7 +2,6 @@ import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { PageHeader } from "@/components/page-header"
 import { LodgeList } from "@/components/lodges/lodge-list"
-import { LodgeFilters } from "@/components/lodges/lodge-filters"
 import { ChatbotButton } from "@/components/chatbot/chatbot-button"
 
 export default function OurLodgesPage() {
@@ -16,15 +15,8 @@ export default function OurLodgesPage() {
       />
 
       <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            <div className="lg:col-span-1">
-              <LodgeFilters />
-            </div>
-            <div className="lg:col-span-3">
-              <LodgeList />
-            </div>
-          </div>
+        <div className="container justify-evenly mx-auto px-4">
+            <LodgeList />
         </div>
       </section>
 

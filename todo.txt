@@ -1,1 +1,30 @@
-1. Create Booking forms to showcase the complete flow
+ Create Booking forms to showcase the complete flow
+
+1. Hero Sections
+    --> create the component for the Hero Sections
+    --> 
+
+2. Find Your Perfect Lodge
+    --> add properties
+    
+3. Our Featured Lodegs
+    --> Fine tune the names of the properties
+    --> remove View All Lodges
+
+4. Lodge Amenities
+    --> This is Fine
+
+5. Explore the Lake District
+    --> We need to find the solutions
+    --> Only Image Cards for the activities
+
+6. Testimonials 
+    --> We need a carousel for this
+
+
+## OUR LODGES ##
+1. Only Three Lodges to be listed
+2. Remove the Filter from the page and put all the 3 lodges all together
+
+
+## Amenities ##

@@ -33,10 +33,10 @@ export const BookingSection = () => {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-8">Find Your Perfect Lodge</h2>
           
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <DateRangePicker
               onChange={(dates) => setSearchParams({ ...searchParams, dates })}
             />
@@ -57,13 +57,13 @@ export const BookingSection = () => {
             </Button>
           </div>
           
-          <div className="mt-8 text-center">
+          {/* <div className="mt-8 text-center">
             <Link href="/our-lodges">
               <Button variant="link" className="text-emerald-600 hover:text-emerald-700">
                 View all our luxury lodges →
               </Button>
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
