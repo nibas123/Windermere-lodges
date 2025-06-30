@@ -3,9 +3,10 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ChevronLeft, ChevronRight, X } from "lucide-react"
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
 
 export function ImageGallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
@@ -13,83 +14,82 @@ export function ImageGallery() {
 
   const galleryCategories = [
     { id: "all", name: "All Photos" },
-    { id: "lodges", name: "Our Lodges" },
-    { id: "interiors", name: "Interiors" },
-    { id: "surroundings", name: "Surroundings" },
-    { id: "activities", name: "Activities" },
+    { id: "glenridding", name: "Glenridding Lodge" },
+    { id: "waters", name: "Water's Reach" },
+    { id: "serenity", name: "Serenity" },
   ]
 
   const galleryImages = [
     {
       src: "https://images.unsplash.com/photo-1521401830884-6c03c1c87ebb?q=80&w=800&auto=format&fit=crop",
       alt: "Lodge exterior with lake view",
-      category: "lodges",
+      category: "glenridding",
       featured: true,
     },
     {
       src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800&auto=format&fit=crop",
       alt: "Mountain view from lodge",
-      category: "surroundings",
+      category: "waters",
       featured: true,
     },
     {
       src: "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?q=80&w=800&auto=format&fit=crop",
       alt: "Luxury bedroom with view",
-      category: "interiors",
+      category: "glenridding",
       featured: false,
     },
     {
       src: "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=800&auto=format&fit=crop",
       alt: "Outdoor hot tub at dusk",
-      category: "lodges",
+      category: "waters",
       featured: true,
     },
     {
       src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop",
       alt: "Modern lodge living room",
-      category: "interiors",
+      category: "serenity",
       featured: false,
     },
     {
       src: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=800&auto=format&fit=crop",
       alt: "Lake shoreline at sunset",
-      category: "surroundings",
+      category: "serenity",
       featured: true,
     },
     {
       src: "https://images.unsplash.com/photo-1578645510447-e20b4311e3ce?q=80&w=800&auto=format&fit=crop",
       alt: "Kayaking on the lake",
-      category: "activities",
+      category: "serenity",
       featured: false,
     },
     {
       src: "https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=800&auto=format&fit=crop",
       alt: "Gourmet kitchen in lodge",
-      category: "interiors",
+      category: "waters",
       featured: false,
     },
     {
       src: "https://images.unsplash.com/photo-1542718610-a1d656d1884c?q=80&w=800&auto=format&fit=crop",
       alt: "Forest trails near lodge",
-      category: "surroundings",
+      category: "waters",
       featured: false,
     },
     {
       src: "https://images.unsplash.com/photo-1520984032042-162d526883e0?q=80&w=800&auto=format&fit=crop",
       alt: "Mountain hiking",
-      category: "activities",
+      category: "waters",
       featured: false,
     },
     {
       src: "https://images.unsplash.com/photo-1551927336-09d50efd69cd?q=80&w=800&auto=format&fit=crop",
       alt: "Cozy fireplace",
-      category: "interiors",
+      category: "glenridding",
       featured: false,
     },
     {
       src: "https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?q=80&w=800&auto=format&fit=crop",
       alt: "Lodge at sunrise",
-      category: "lodges",
+      category: "serenity",
       featured: false,
     },
   ]
@@ -112,7 +112,7 @@ export function ImageGallery() {
     <div>
       <div className="flex justify-center mb-8">
         <Tabs defaultValue="all" onValueChange={setCategory}>
-          <TabsList className="grid grid-cols-5">
+          <TabsList className="grid grid-cols-4">
             {galleryCategories.map((cat) => (
               <TabsTrigger key={cat.id} value={cat.id}>
                 {cat.name}
@@ -126,7 +126,7 @@ export function ImageGallery() {
         <div className="mb-12">
           <h3 className="text-2xl font-bold mb-6 text-center">Featured Images</h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
             {featuredImages.map((image, index) => (
               <Dialog key={index}>
                 <DialogTrigger asChild>
@@ -141,6 +141,12 @@ export function ImageGallery() {
                   </Card>
                 </DialogTrigger>
                 <DialogContent className="max-w-3xl p-0 overflow-hidden bg-transparent border-none">
+                  <VisuallyHidden>
+                    <DialogTitle>Image Viewer</DialogTitle>
+                    <DialogDescription>
+                      A dialog showing a larger version of the selected image.
+                    </DialogDescription>
+                  </VisuallyHidden>
                   <div className="relative">
                     <img
                       src={image.src || "/placeholder.svg"}
@@ -182,6 +188,12 @@ export function ImageGallery() {
       {selectedImage !== null && (
         <Dialog open={selectedImage !== null} onOpenChange={() => setSelectedImage(null)}>
           <DialogContent className="max-w-5xl p-0 overflow-hidden bg-transparent border-none">
+            <VisuallyHidden>
+              <DialogTitle>Image Viewer</DialogTitle>
+              <DialogDescription>
+                A dialog showing a larger version of the selected image with navigation controls.
+              </DialogDescription>
+            </VisuallyHidden>
             <div className="relative">
               <img
                 src={filteredImages[selectedImage].src || "/placeholder.svg"}

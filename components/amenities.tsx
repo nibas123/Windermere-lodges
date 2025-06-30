@@ -70,11 +70,11 @@ export const Amenities = () => {
           })}
         </div>
 
-        <div className="text-center mt-12">
+        {/* <div className="text-center mt-12">
           <Link href="/amenities">
             <Button className="bg-emerald-600 hover:bg-emerald-700">View All Amenities</Button>
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   );

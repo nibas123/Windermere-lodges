@@ -13,7 +13,7 @@ export const lodges = [
     amenities: [
       'Lake Access', 'Wifi', 'Shared Pool', 'Washing Machine', 'Hair Dryer', 'Kitchen', 'TV', '+11 More'
     ],
-    about: 'Glenridding Lodge is a beautiful lakeside retreat with modern amenities and stunning views. Perfect for families and couples.',
+    about: 'Our modern lodge offers you all the comforts you need and the perfect base for your Lake District Holiday. Situated just a 1 minute walk to the main facilities and 3 minute walk to the lake, you\'re perfectly placed to enjoy everything White Cross Bay has to offer. Our large decking area and comfortable seating area offers the perfect rest spot after a day of walking - west facing for late sunshine too! We also provide 2 parking spaces too - ideal for 2 x couples or those travelling separately.',
     locationMap: 'https://www.google.com/maps/embed?...',
     reviews: [
       {
@@ -65,7 +65,7 @@ export const lodges = [
     amenities: [
       'Swimming pool', 'Ground floor accommodation', 'Ground floor bedroom', '+7 More'
     ],
-    about: "Water's Reach offers a tranquil escape with direct access to the lake and a range of family-friendly amenities.",
+    about: "Troutbeck Bridge 0.4 miles.Water's Reach is a delightful lodge located near the tranquil shores of Windermere in Cumbria.It offers off-road parking for two vehicles and is pet-friendly, accommodating two well-mannered pets.This charming retreat is ideal for families or groups of friends looking for a peaceful getaway amidst the breathtaking landscapes of the Lake District.Upon entering this single-storey residence, guests are welcomed by a spacious open-plan living area, featuring a Smart TV and a toasty electric fire, perfect for intimate evenings indoors.The designated cook will appreciate the well-appointed kitchen, which includes an electric oven, gas hob, microwave, and a convenient dishwasher to facilitate clean up.Additionally, a wine chiller and a fridge/freezer are available for storing your favourite drinks and fresh ingredients.When it's time to enjoy a meal, gather around the dining table that comfortably seats six, and savour a hearty dinner while planning the next day's excursions.As the day winds down, retreat to one of the three inviting bedrooms: a king-size room with an en-suite bathroom featuring a basin and WC, along with two twin rooms, all ensuring a restful night's sleep.In the morning, refresh yourself in the modern shower room, equipped with a walk-in shower, basin, and WC.Step outside to the rear patio and decking area, where you can sip your morning coffee or enjoy an evening drink, enveloped by the soothing sounds of nature.The outdoor furniture provides a lovely spot to unwind and absorb the peaceful ambiance of this charming retreat.Take advantage of your excellent location and explore the National Trust - Wray's impressive array of native flora and fauna.Adventure enthusiasts will relish a day at Brockhole on Windermere, which offers a variety of thrilling outdoor activities, while those in search of tranquillity may prefer a leisurely stroll to Orrest Head Viewpoint for breathtaking panoramic vistas of the Lake District.Adventurers should not overlook Zip World Windermere, an exhilarating experience designed for those seeking thrills.Enhance your understanding of local history by visiting Kendal Museum, the Quaker Tapestry Museum, or the Lakeland Museum, each offering intriguing exhibits.A visit to the impressive Lancaster Castle is highly advisable, as its 1000-year-old history is sure to enchant any guest.Proceed to Williamson Park to enjoy the stunning vistas extending to Morecambe Bay, and conclude your day at the Lancaster City Museum, which explores the city’s rich heritage.After a day filled with discovery, retreat to the tranquil haven of Water's Reach, your ideal home away from home in the Lake District.",
     locationMap: 'https://www.google.com/maps/embed?...',
     reviews: [
       {
@@ -108,7 +108,7 @@ export const lodges = [
     amenities: [
       'Ground floor accommodation', 'Ground floor bedroom', 'Off Road Parking', 'Garden / Patio', '+4 More'
     ],
-    about: 'Serenity is a peaceful lodge surrounded by nature, perfect for a romantic getaway or a quiet retreat.',
+    about: 'Serenity is a traditional cabin style pine lodge in the Skiptory Howe area of White Cross Bay in a private position within the park with woodland all around plus 2 deck areas: one is secluded with a second to enjoy the sunshine.Serenity offers a cosy retreat ideal for couples or families looking for a quiet location.The lodge will sleep up to 6 guests plus an infant in a travel cot.It’s perfect for a getaway or simply as a base to explore the lakes.Two dogs are welcome, so the whole family can enjoy a break!Serenity is located in a slightly hilly location within the Skiptory Howe area of the Park, and the area immediately around the lodge may not be suitable for children playing outside, but the outdoor play area is a short walk away.On the Park itself, there is a bar and restaurant with an outdoor seating area for dogs, a picnic area and a children’s play zone.Note: Some facilities in the park are subject to extra costs, such as the use of the pool, entertainment, bar, and restaurant.You’re also just two miles from the charming Windermere village with shops, cafes and pubs, and three miles from Bowness boat landings, where the elegant cruisers come in and you can hop on a boat trip.Ambleside is three miles in the other direction, another beautiful town with shops, cafes, pubs and restaurants and of course, fabulous walks in every direction.A wonderful place to make special memories with your loved ones.',
     locationMap: 'https://www.google.com/maps/embed?...',
     reviews: [
       {
@@ -116,7 +116,19 @@ export const lodges = [
         text: 'A beautiful and peaceful place. Loved every moment!',
         name: 'Alice Brown',
         stars: 5
-      }
+      },
+      {
+        rating: 5,
+        text: 'A beautiful and peaceful place. Loved every moment!',
+        name: 'Alice Brown',
+        stars: 5
+      },
+      {
+        rating: 5,
+        text: 'A beautiful and peaceful place. Loved every moment!',
+        name: 'Alice Brown',
+        stars: 5
+      },
     ],
     policies: [
       { label: 'Check-in & Check-out', value: 'Check-in: 3:00 pm Check-out: 11:00 am' },

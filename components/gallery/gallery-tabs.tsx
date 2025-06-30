@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ImageGallery } from "./image-gallery"
-import { VideoGallery } from "./video-gallery"
+// import { VideoGallery } from "./video-gallery"
 
 export function GalleryTabs() {
   const [activeTab, setActiveTab] = useState("images")
@@ -21,9 +21,9 @@ export function GalleryTabs() {
   return (
     <Tabs defaultValue="images" onValueChange={setActiveTab} className="w-full">
       <div className="flex justify-center mb-8">
-        <TabsList className="grid w-[400px] grid-cols-2">
+        <TabsList className="grid w-auto grid-cols-1">
           <TabsTrigger value="images">Images</TabsTrigger>
-          <TabsTrigger value="videos">Videos</TabsTrigger>
+          {/* <TabsTrigger value="videos">Videos</TabsTrigger> */}
         </TabsList>
       </div>
 
@@ -31,9 +31,9 @@ export function GalleryTabs() {
         <ImageGallery />
       </TabsContent>
 
-      <TabsContent value="videos" className="mt-0">
+      {/* <TabsContent value="videos" className="mt-0">
         <VideoGallery />
-      </TabsContent>
+      </TabsContent> */}
     </Tabs>
   )
 }

@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Star, Users, Maximize, BedDouble, Bath, Heart } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
@@ -59,6 +60,7 @@ const lodges = [
 
 export function LodgeList() {
   const [favorites, setFavorites] = useState<number[]>([])
+  const router = useRouter()
 
   const toggleFavorite = (id: number) => {
     if (favorites.includes(id)) {
@@ -140,9 +142,15 @@ export function LodgeList() {
                     <span className="text-2xl font-bold text-emerald-600">£{lodge.price}</span>
                     <span className="text-gray-500 text-lg"> / night</span>
                   </div>
-                  <Link href="/booking">
-                    <Button className="bg-emerald-600 font-bold hover:bg-emerald-700">Book Now</Button>
-                  </Link>
+                  <Button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      router.push('/booking');
+                    }}
+                    className="bg-emerald-600 font-bold hover:bg-emerald-700"
+                  >
+                    Book Now
+                  </Button>
                 </CardFooter>
               </Card>
             </Link>
