@@ -35,11 +35,11 @@ const Footer = () => {
                   Our Lodges
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/amenities" className="text-gray-300 hover:text-emerald-400 transition-colors">
                   Amenities
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="/activities" className="text-gray-300 hover:text-emerald-400 transition-colors">
                   Activities
@@ -50,11 +50,11 @@ const Footer = () => {
                   Gallery
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/itinerary-planner" className="text-gray-300 hover:text-emerald-400 transition-colors">
                   Itinerary Planner
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="/contact" className="text-gray-300 hover:text-emerald-400 transition-colors">
                   Contact Us

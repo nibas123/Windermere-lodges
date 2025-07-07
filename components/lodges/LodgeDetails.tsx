@@ -20,6 +20,7 @@ import { Star } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { VisuallyHidden } from "../ui/visually-hidden";
 import { galleryImagesByLodge } from "../gallery/gallery-data";
+import { ChatbotButton } from "@/components/chatbot/chatbot-button"
 
 const amenityIconMap: Record<string, string> = {
   'Lake Access': '/icons/water.png',
@@ -515,6 +516,7 @@ export function LodgeDetails({ lodge }: { lodge: any }) {
         </div>
       </div>
       <Footer />
+      <ChatbotButton />
     </>
   );
 } 
