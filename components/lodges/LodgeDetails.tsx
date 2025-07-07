@@ -17,8 +17,9 @@ import { Icons } from "../ui/icons";
 import { type LucideIcon as Icon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Star } from "lucide-react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { VisuallyHidden } from "../ui/visually-hidden";
+import { galleryImagesByLodge } from "../gallery/gallery-data";
 
 const amenityIconMap: Record<string, string> = {
   'Lake Access': '/icons/water.png',
@@ -97,17 +98,17 @@ function Gallery({ images, lodgeName }: { images: string[]; lodgeName: string })
         {/* Left Arrow */}
         {total > 1 && (
           <button
-            className="absolute left-3 top-1/2 -translate-y-1/2 bg-white shadow-lg hover:bg-gray-200 text-gray-700 rounded-full p-3 z-10 border border-gray-200"
+            className="absolute left-3 top-1/2 -translate-y-1/2 shadow-lg text-white rounded-full p-3 z-10"
             onClick={handlePrev}
             aria-label="Previous image"
           >
-            <svg width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#fff"/><path d="M15 18l-6-6 6-6" stroke="#374151" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            <svg width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#fff"/><path d="M15 18l-6-6" stroke="#374151" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </button>
         )}
         {/* Right Arrow */}
         {total > 1 && (
           <button
-            className="absolute right-3 top-1/2 -translate-y-1/2 bg-white shadow-lg hover:bg-gray-200 text-gray-700 rounded-full p-3 z-10 border border-gray-200"
+            className="absolute right-3 top-1/2 -translate-y-1/2 shadow-lg text-white rounded-full p-3 z-10"
             onClick={handleNext}
             aria-label="Next image"
           >
@@ -127,8 +128,10 @@ function Gallery({ images, lodgeName }: { images: string[]; lodgeName: string })
         <Dialog open={modalOpen} onOpenChange={setModalOpen}>
           <DialogContent className="max-w-5xl p-0 bg-black/95 border-none flex flex-col items-center justify-center">
             <VisuallyHidden asChild>
-              <h2>Gallery images for {lodgeName}</h2>
+              <DialogTitle>Gallery images for {lodgeName}</DialogTitle>
             </VisuallyHidden>
+            {/* Add DialogTitle for accessibility, hidden visually */}
+            <h2 id="gallery-dialog-title" className="sr-only">Gallery images for {lodgeName}</h2>
             <div className="relative w-full flex items-center justify-center" style={{ minHeight: 500 }}>
               {/* Left Arrow */}
               {total > 1 && (
@@ -191,11 +194,11 @@ function Gallery({ images, lodgeName }: { images: string[]; lodgeName: string })
       {/* Vertical Divider */}
       <div className="w-px bg-gray-200 mx-2" />
       {/* Thumbnails: single vertical column */}
-      <div className="flex flex-col gap-2 max-h-[400px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent w-32 pr-1">
-        {images.map((img, idx) => (
+      <div className="flex flex-col gap-2 max-h-[400px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent w-40 pr-3 py-2">
+        {(images.length > 0 ? images : ["/placeholder.jpg"]).map((img, idx) => (
           <button
             key={img + idx}
-            className={`relative rounded overflow-hidden border-2 w-full aspect-[4/3] ${idx === current ? 'border-emerald-600' : 'border-transparent'}`}
+            className={`relative rounded overflow-hidden border-2 w-full min-h-[100px] aspect-[4/3] ${idx === current ? 'border-emerald-600' : 'border-transparent'}`}
             onClick={() => handleThumbClick(idx)}
             tabIndex={0}
             aria-label={`Show image ${idx + 1}`}
@@ -206,6 +209,7 @@ function Gallery({ images, lodgeName }: { images: string[]; lodgeName: string })
               width={120}
               height={90}
               className={`object-cover w-full h-full ${idx === current ? '' : 'opacity-80'}`}
+              onError={(e) => { (e.target as HTMLImageElement).src = '/placeholder.jpg'; }}
             />
             {idx === current && <span className="absolute inset-0 ring-2 ring-emerald-600 rounded pointer-events-none"></span>}
           </button>
@@ -225,15 +229,19 @@ export function LodgeDetails({ lodge }: { lodge: any }) {
     new Date("2025-10-12T00:00:00")
   );
 
-  // Add more images for demo if not enough
-  const galleryImages = lodge.images && lodge.images.length > 2
-    ? lodge.images
-    : [
-        lodge.image,
-        "/placeholder.jpg",
-        "/placeholder-user.jpg",
-        "/activities/4.png"
-      ];
+  // Map lodge name or id to gallery-data key
+  const lodgeKey =
+    lodge.name === "Glenridding Lodge"
+      ? "lodge1"
+      : lodge.name === "Water's Reach"
+      ? "lodge2"
+      : lodge.name === "Serenity"
+      ? "lodge3"
+      : null;
+
+  const galleryImages =
+    (lodgeKey && galleryImagesByLodge[lodgeKey]?.map(img => img.src)) ||
+    [lodge.image, "/placeholder.jpg", "/placeholder-user.jpg", "/activities/4.png"];
 
   return (
     <>
