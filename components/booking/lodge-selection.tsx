@@ -28,8 +28,8 @@ export function LodgeSelection({ onContinue, bookingDetails }: LodgeSelectionPro
   const lodges = [
     {
       id: "1",
-      name: "Lakeside Retreat",
-      description: "A stunning lodge with panoramic lake views, perfect for couples seeking a romantic getaway.",
+      name: "Glenridding Lodge",
+      description: "We're here to help plan your perfect getaway",
       image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=800&auto=format&fit=crop",
       price: 199,
       maxGuests: 2,
@@ -39,21 +39,21 @@ export function LodgeSelection({ onContinue, bookingDetails }: LodgeSelectionPro
     },
     {
       id: "2",
-      name: "Woodland Haven",
+      name: "Water's Reach",
       description:
         "Nestled among ancient trees, this spacious lodge offers privacy and tranquility for the whole family.",
       image: "https://images.unsplash.com/photo-1542718610-a1d656d1884c?q=80&w=800&auto=format&fit=crop",
       price: 249,
       maxGuests: 4,
       rating: 4.8,
-      location: "Woodland setting, 10-minute drive to Ambleside",
+      location: "Troutbeck Bridge 0.4 miles.",
       amenities: ["Forest view", "Outdoor deck", "BBQ", "2 bedrooms", "WiFi"],
     },
     {
       id: "3",
-      name: "Mountain View Lodge",
+      name: "Serenity",
       description:
-        "Elevated position with breathtaking mountain vistas and luxury amenities for an unforgettable stay.",
+        "789 Serenity Lane, White Cross Bay",
       image: "https://images.unsplash.com/photo-1520984032042-162d526883e0?q=80&w=800&auto=format&fit=crop",
       price: 279,
       maxGuests: 6,

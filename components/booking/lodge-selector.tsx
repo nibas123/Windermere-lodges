@@ -28,23 +28,23 @@ interface Lodge {
 const SAMPLE_LODGES: Lodge[] = [
   {
     id: '1',
-    name: 'Lakeside Villa',
-    description: 'Luxurious villa with lake view',
-    maxGuests: 6,
+    name: 'Glenridding Lodge',
+    description: 'Grasmere 2, White Cross Bay near Windermere, Cumbria & The Lake District (Ref. 1068867)',
+    maxGuests: 4,
     pricePerNight: 350,
   },
   {
     id: '2',
-    name: 'Forest Cabin',
-    description: 'Cozy cabin in the woods',
-    maxGuests: 4,
+    name: 'Water\'s Reach',
+    description: 'White Cross Bay Holiday Park near Troutbeck Bridge, Cumbria & The Lake District (Ref. 1172323)',
+    maxGuests: 6,
     pricePerNight: 250,
   },
   {
     id: '3',
-    name: 'Mountain Lodge',
-    description: 'Spacious lodge with mountain views',
-    maxGuests: 8,
+    name: 'Serenity',
+    description: 'Skiptory Howe 10, White Cross Bay near Windermere, Cumbria & The Lake District (Ref. 1172347)',
+    maxGuests: 6,
     pricePerNight: 450,
   },
 ];

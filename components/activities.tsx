@@ -17,11 +17,11 @@ const activities = [
     image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
   },
   {
-    title: "Water Sports",
+    title: "Kayaking",
     image: "https://images.unsplash.com/photo-1530866495561-507c9faab2ed?q=80&w=2070&auto=format&fit=crop",
   },
   {
-    title: "Water Sports",
+    title: "Treking",
     image: "activities/4.png",
   },
 ]

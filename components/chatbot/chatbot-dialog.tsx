@@ -66,7 +66,7 @@ export const ChatbotDialog = ({ open, onOpenChange }: ChatbotDialogProps) => {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[425px] h-[600px] flex flex-col p-0 gap-0">
+      <DialogContent className="sm:max-w-[425px] h-[600px] flex flex-col p-0 gap-0 right-90%">
         <DialogHeader className="p-4 border-b">
           <div className="flex items-center justify-between">
             <DialogTitle>Windermere Lodges Assistant</DialogTitle>

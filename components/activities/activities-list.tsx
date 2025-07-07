@@ -74,7 +74,7 @@ export function ActivitiesList() {
       title: "Lakeland Distillery Tour",
       description:
         "Discover the craft behind the award-winning Lakes Distillery whisky, gin, and vodka with a guided tour and tasting session. Learn about the distillation process and sample their finest spirits.",
-      image: "https://images.unsplash.com/photo-1574147833132-363613d8c4bd?q=80&w=800&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1603114595741-db0684d3aafc?q=80&w=800&auto=format&fit=crop",
       duration: "1.5 hours",
       location: "Bassenthwaite Lake, 30 min drive",
       seasons: ["All year"],

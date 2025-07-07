@@ -7,96 +7,26 @@ import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogDescription } 
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ChevronLeft, ChevronRight, X } from "lucide-react"
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
+import { galleryImagesByLodge, GalleryImage } from "./gallery-data"
 
-export function ImageGallery() {
+export function ImageGallery({ lodgeKey }: { lodgeKey: string }) {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   const [category, setCategory] = useState<string>("all")
+  const [visibleCount, setVisibleCount] = useState(8)
 
   const galleryCategories = [
     { id: "all", name: "All Photos" },
-    { id: "glenridding", name: "Glenridding Lodge" },
-    { id: "waters", name: "Water's Reach" },
-    { id: "serenity", name: "Serenity" },
+    { id: "interior", name: "Interior" },
+    { id: "exterior", name: "Exterior" },
+    { id: "surroundings", name: "Surroundings" },
   ]
 
-  const galleryImages = [
-    {
-      src: "https://images.unsplash.com/photo-1521401830884-6c03c1c87ebb?q=80&w=800&auto=format&fit=crop",
-      alt: "Lodge exterior with lake view",
-      category: "glenridding",
-      featured: true,
-    },
-    {
-      src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800&auto=format&fit=crop",
-      alt: "Mountain view from lodge",
-      category: "waters",
-      featured: true,
-    },
-    {
-      src: "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?q=80&w=800&auto=format&fit=crop",
-      alt: "Luxury bedroom with view",
-      category: "glenridding",
-      featured: false,
-    },
-    {
-      src: "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=800&auto=format&fit=crop",
-      alt: "Outdoor hot tub at dusk",
-      category: "waters",
-      featured: true,
-    },
-    {
-      src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop",
-      alt: "Modern lodge living room",
-      category: "serenity",
-      featured: false,
-    },
-    {
-      src: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=800&auto=format&fit=crop",
-      alt: "Lake shoreline at sunset",
-      category: "serenity",
-      featured: true,
-    },
-    {
-      src: "https://images.unsplash.com/photo-1578645510447-e20b4311e3ce?q=80&w=800&auto=format&fit=crop",
-      alt: "Kayaking on the lake",
-      category: "serenity",
-      featured: false,
-    },
-    {
-      src: "https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=800&auto=format&fit=crop",
-      alt: "Gourmet kitchen in lodge",
-      category: "waters",
-      featured: false,
-    },
-    {
-      src: "https://images.unsplash.com/photo-1542718610-a1d656d1884c?q=80&w=800&auto=format&fit=crop",
-      alt: "Forest trails near lodge",
-      category: "waters",
-      featured: false,
-    },
-    {
-      src: "https://images.unsplash.com/photo-1520984032042-162d526883e0?q=80&w=800&auto=format&fit=crop",
-      alt: "Mountain hiking",
-      category: "waters",
-      featured: false,
-    },
-    {
-      src: "https://images.unsplash.com/photo-1551927336-09d50efd69cd?q=80&w=800&auto=format&fit=crop",
-      alt: "Cozy fireplace",
-      category: "glenridding",
-      featured: false,
-    },
-    {
-      src: "https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?q=80&w=800&auto=format&fit=crop",
-      alt: "Lodge at sunrise",
-      category: "serenity",
-      featured: false,
-    },
-  ]
+  const galleryImages: GalleryImage[] = galleryImagesByLodge[lodgeKey] || []
 
   const filteredImages = category === "all" ? galleryImages : galleryImages.filter((img) => img.category === category)
 
   const featuredImages = galleryImages.filter((img) => img.featured)
+  const visibleImages = filteredImages.slice(0, visibleCount)
 
   const nextImage = () => {
     if (selectedImage === null) return
@@ -167,23 +97,34 @@ export function ImageGallery() {
         </div>
       )}
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-        {filteredImages.map((image, index) => (
-          <Card
-            key={index}
-            className="overflow-hidden cursor-pointer hover:shadow-lg transition-all duration-300"
-            onClick={() => setSelectedImage(index)}
-          >
-            <div className="relative aspect-[4/3] overflow-hidden">
-              <img
-                src={image.src || "/placeholder.svg"}
-                alt={image.alt}
-                className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-              />
-            </div>
-          </Card>
-        ))}
+      <div className="relative">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          {visibleImages.map((image, index) => (
+            <Card
+              key={index}
+              className="overflow-hidden cursor-pointer hover:shadow-lg transition-all duration-300"
+              onClick={() => setSelectedImage(index)}
+            >
+              <div className="relative aspect-[6/3] overflow-hidden">
+                <img
+                  src={image.src || "/placeholder.svg"}
+                  alt={image.alt}
+                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                />
+              </div>
+            </Card>
+          ))}
+        </div>
+        {/* Subtle gradient overlay at the bottom for 'hidden' look */}
+      <div className="pointer-events-none absolute left-0 right-0 bottom-0 h-16 bg-gradient-to-t from-black/40 to-transparent z-10 shadow-6xl" />
       </div>
+      {visibleCount < filteredImages.length && (
+        <div className="flex justify-center mt-6">
+          <Button className="bg-emerald-600 hover:bg-emerald-700 text-white" onClick={() => setVisibleCount(visibleCount + 8)}>
+            Load More
+          </Button>
+        </div>
+      )}
 
       {selectedImage !== null && (
         <Dialog open={selectedImage !== null} onOpenChange={() => setSelectedImage(null)}>
@@ -229,11 +170,11 @@ export function ImageGallery() {
         </Dialog>
       )}
 
-      <div className="text-center mt-8">
+      {/* <div className="text-center mt-8">
         <Button variant="outline" className="border-teal-600 text-teal-600 hover:bg-teal-50">
           Load More
         </Button>
-      </div>
+      </div> */}
     </div>
   )
 }

@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ImageGallery } from "./image-gallery"
-// import { VideoGallery } from "./video-gallery"
 
 export function GalleryTabs() {
   const [activeTab, setActiveTab] = useState("images")
@@ -19,21 +18,24 @@ export function GalleryTabs() {
   }
 
   return (
-    <Tabs defaultValue="images" onValueChange={setActiveTab} className="w-full">
+    <Tabs defaultValue="lodge1" onValueChange={setActiveTab} className="w-full">
       <div className="flex justify-center mb-8">
-        <TabsList className="grid w-auto grid-cols-1">
-          <TabsTrigger value="images">Images</TabsTrigger>
-          {/* <TabsTrigger value="videos">Videos</TabsTrigger> */}
+        <TabsList className="grid w-auto grid-cols-3">
+          <TabsTrigger value="lodge1">Glenridding Lodge</TabsTrigger>
+          <TabsTrigger value="lodge2">Water's Reach</TabsTrigger>
+          <TabsTrigger value="lodge3">Serenity</TabsTrigger>
         </TabsList>
       </div>
 
-      <TabsContent value="images" className="mt-0">
-        <ImageGallery />
+      <TabsContent value="lodge1" className="mt-0">
+        <ImageGallery lodgeKey="lodge1" />
       </TabsContent>
-
-      {/* <TabsContent value="videos" className="mt-0">
-        <VideoGallery />
-      </TabsContent> */}
+      <TabsContent value="lodge2" className="mt-0">
+        <ImageGallery lodgeKey="lodge2" />
+      </TabsContent>
+      <TabsContent value="lodge3" className="mt-0">
+        <ImageGallery lodgeKey="lodge3" />
+      </TabsContent>
     </Tabs>
   )
 }
