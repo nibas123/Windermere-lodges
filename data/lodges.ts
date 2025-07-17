@@ -55,7 +55,7 @@ export const lodges = [
     id: '2',
     name: "Water's Reach",
     address: 'White Cross Bay Holiday Park near Troutbeck Bridge, Cumbria & The Lake District (Ref. 1172323)',
-    image: '/Waters_Reach/1.jpeg',
+    image: '/Waters_Reach/1.jpg',
     price: 180,
     oldPrice: 220,
     discount: 18,
@@ -92,7 +92,7 @@ export const lodges = [
     ],
     headerTitle: "Water's Reach",
     headerDescription: 'A tranquil escape for families and friends',
-    headerImage: '/Waters_Reach/1.jpeg',
+    headerImage: '/Waters_Reach/1.jpg',
   },
   {
     id: '3',

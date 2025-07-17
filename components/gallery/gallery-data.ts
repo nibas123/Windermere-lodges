@@ -73,6 +73,8 @@ export const galleryImagesByLodge: Record<string, GalleryImage[]> = {
     { src: '/Waters_Reach/surroundings (1).jpg', alt: "Water's Reach surroundings", category: 'surroundings', featured: false },
     { src: '/Waters_Reach/surroundings (2).jpg', alt: "Water's Reach surroundings", category: 'surroundings', featured: false },
     { src: '/Waters_Reach/surroundings (3).jpg', alt: "Water's Reach surroundings", category: 'surroundings', featured: false },
+    { src: '/Waters_Reach/surroundings (4).jpg', alt: "Water's Reach surroundings", category: 'surroundings', featured: false },
+    { src: '/Waters_Reach/surroundings (5).jpg', alt: "Water's Reach surroundings", category: 'surroundings', featured: false },
   ],
   lodge3: [
     // Serenity
