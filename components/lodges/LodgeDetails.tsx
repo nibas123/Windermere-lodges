@@ -224,7 +224,7 @@ export function LodgeDetails({ lodge }: { lodge: any }) {
   const router = useRouter();
   const [showFAQ, setShowFAQ] = useState<number | null>(null);
   const [checkInDate, setCheckInDate] = useState<Date | undefined>(
-    new Date("2025-10-07T00:00:00")
+    new Date()
   );
   const [checkOutDate, setCheckOutDate] = useState<Date | undefined>(
     new Date("2025-10-12T00:00:00")
