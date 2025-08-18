@@ -9,9 +9,13 @@
     "lint": "next lint",
     "backend": "node backend/api/server.js"
   },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
     "@prisma/client": "^6.11.1",
+    "@prisma/extension-accelerate": "^2.0.2",
     "@radix-ui/react-accordion": "^1.2.2",
     "@radix-ui/react-alert-dialog": "^1.1.4",
     "@radix-ui/react-aspect-ratio": "^1.1.1",
@@ -61,13 +65,13 @@
     "react-day-picker": "^9.8.1",
     "react-dom": "^19",
     "react-hook-form": "^7.54.1",
+    "react-hot-toast": "^2.6.0",
     "react-resizable-panels": "^2.1.7",
     "recharts": "2.15.0",
     "sonner": "^1.7.1",
     "stripe": "^18.3.0",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
-    "vaul": "^0.9.6",
     "zod": "^3.24.1"
   },
   "devDependencies": {
@@ -78,6 +82,7 @@
     "postcss": "^8",
     "prisma": "^6.11.1",
     "tailwindcss": "^3.4.17",
+    "tsx": "^4.20.4",
     "typescript": "^5"
   }
 }

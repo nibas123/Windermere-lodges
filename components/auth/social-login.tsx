@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { Button } from '@/components/ui/button';
-import { Icons } from '@/components/ui/icons';
+import { Button } from "@/components/ui/button";
+import { Icons } from "@/components/ui/icons";
 
 export function SocialLogin() {
   return (
     <div className="grid gap-4">
-      <Button variant="outline" type="button" disabled>
+      <Button variant="outline" type="submit" value={"google"} name="action">
         <Icons.google className="mr-2 h-4 w-4" />
         Continue with Google
       </Button>
-      <Button variant="outline" type="button" disabled>
+      <Button variant="outline" type="submit" value={"github"} name="action">
         <Icons.facebook className="mr-2 h-4 w-4" />
         Continue with Facebook
       </Button>
@@ -26,4 +26,4 @@ export function SocialLogin() {
       </div>
     </div>
   );
-} 
+}
