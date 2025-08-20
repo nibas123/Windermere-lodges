@@ -18,7 +18,7 @@ import {
 
 
 const formSchema = z.object({
-    username: z.string().min(5,{
+    name: z.string().min(5,{
     message: "Username contain alphanumerics.",
   }),
   email: z.string().email({
@@ -38,14 +38,13 @@ export function RegisterForm() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
-      username:"",
+      name:"",
       password: "",
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
 
-    console.log(values)
     try{
 
       const response = await fetch("http://localhost:3000/api/auth/register", {
@@ -60,23 +59,6 @@ export function RegisterForm() {
     }catch(e){
       console.error(e)
     }
-    console.log(values)
-    // try {
-    //   setIsLoading(true)
-    //   const response = await credentialLogin(values);
-
-    //   if (response.user) {
-    //     router.push("/");
-    //   } else {
-    //     setError(response.error.message);
-    //   }
-
-    // } catch (err) {
-    //   const e = getErrorMessage(err);
-    //   setError('Invalid credentials')
-    // }finally{
-    //   setIsLoading(false);
-    // }
   }
 
   return (
@@ -84,7 +66,7 @@ export function RegisterForm() {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <FormField
           control={form.control}
-          name="username"
+          name="name"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Username</FormLabel>

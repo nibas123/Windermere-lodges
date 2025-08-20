@@ -27,12 +27,13 @@ const formSchema = z.object({
   }),
 });
 
+type loginType = Zod.infer<typeof formSchema>;
 export function LoginForm() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error,setError] = useState('')
 
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<loginType>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
@@ -62,7 +63,6 @@ export function LoginForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        {error&&<p>fajdflkajflka</p>}
         <FormField
           control={form.control}
           name="email"

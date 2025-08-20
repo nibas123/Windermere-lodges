@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use client"
 
 import { useEffect, useRef, useState } from "react"
@@ -15,16 +16,48 @@ export const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null)
   const textRef = useRef<HTMLDivElement>(null)
   const [current, setCurrent] = useState(0)
+=======
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import gsap from "gsap";
+import Image from "next/image";
+import image1 from "../public/Main-banners/windermere1.jpg";
+import image2 from "../public/Main-banners/windermere2.jpg";
+import image3 from "../public/Main-banners/windermere3.jpg";
+import image4 from "../public/Main-banners/windermere4.jpg";
+
+// "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop",
+// "https://images.unsplash.com/photo-1464983953574-0892a716854b?q=80&w=1920&auto=format&fit=crop"
+const sliderImages = [image1, image2, image3, image4];
+
+export const Hero = () => {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+  const [current, setCurrent] = useState(0);
+>>>>>>> prisma
 
   useEffect(() => {
     if (heroRef.current && textRef.current) {
       // Animate hero section
+<<<<<<< HEAD
       gsap.fromTo(heroRef.current, { opacity: 0.7 }, { opacity: 1, duration: 1.5 })
+=======
+      gsap.fromTo(
+        heroRef.current,
+        { opacity: 0.7 },
+        { opacity: 1, duration: 1.5 }
+      );
+>>>>>>> prisma
 
       // Animate text elements
       gsap.fromTo(
         textRef.current.children,
         { y: 50, opacity: 0 },
+<<<<<<< HEAD
         { y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: "power3.out" },
       )
     }
@@ -49,6 +82,41 @@ export const Hero = () => {
         >
           <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         </div>
+=======
+        { y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: "power3.out" }
+      );
+    }
+
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % sliderImages.length);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, [current]);
+
+  const nextSlide = () =>
+    setCurrent((prev) => (prev + 1) % sliderImages.length);
+  const prevSlide = () =>
+    setCurrent(
+      (prev) => (prev - 1 + sliderImages.length) % sliderImages.length
+    );
+
+  return (
+    <div
+      ref={heroRef}
+      className="relative min-h-[860px] flex items-center justify-center overflow-hidden"
+    >
+      {/* Slider Images */}
+      {sliderImages.map((img, idx) => (
+        <Image
+          src={img}
+          alt="liliaz"
+          key={idx}
+          fill
+          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-700 ${
+            idx === current ? "opacity-100 z-0" : "opacity-0 z-0"
+          }`}
+        />
+>>>>>>> prisma
       ))}
 
       {/* Slider Controls */}
@@ -72,7 +140,13 @@ export const Hero = () => {
         {sliderImages.map((_, idx) => (
           <button
             key={idx}
+<<<<<<< HEAD
             className={`w-3 h-3 rounded-full ${idx === current ? 'bg-white' : 'bg-white/40'} border border-white`}
+=======
+            className={`w-3 h-3 rounded-full ${
+              idx === current ? "bg-white" : "bg-white/40"
+            } border border-white`}
+>>>>>>> prisma
             onClick={() => setCurrent(idx)}
             aria-label={`Go to slide ${idx + 1}`}
           />
@@ -80,6 +154,7 @@ export const Hero = () => {
       </div>
 
       {/* Content */}
+<<<<<<< HEAD
       <div className="container mx-auto px-4 relative z-10 text-left" ref={textRef}>
         <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
           Experience Luxury in the <br/> Heart of the Lake District
@@ -90,6 +165,25 @@ export const Hero = () => {
         <div className="flex flex-col sm:flex-row justify-start gap-4">
           <Link href="/our-lodges">
             <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg">
+=======
+      <div
+        className="container mx-auto px-4 relative z-10 text-left"
+        ref={textRef}
+      >
+        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+          Experience Luxury in the <br /> Heart of the Lake District
+        </h1>
+        <p className="text-xl md:text-2xl text-white mb-20 mx-auto">
+          Discover our exclusive collection of premium lodges <br /> with
+          breathtaking views and exceptional amenities
+        </p>
+        <div className="flex flex-col sm:flex-row justify-start gap-4">
+          <Link href="/our-lodges">
+            <Button
+              size="lg"
+              className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg"
+            >
+>>>>>>> prisma
               Explore Our Lodges
             </Button>
           </Link>
@@ -112,6 +206,11 @@ export const Hero = () => {
         </div>
       </div> */}
     </div>
+<<<<<<< HEAD
   )
 }
 
+=======
+  );
+};
+>>>>>>> prisma

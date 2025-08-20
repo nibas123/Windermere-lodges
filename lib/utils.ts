@@ -43,15 +43,38 @@ export function getErrorMessage(err: unknown): string {
   return err instanceof Error ? err.message : String(err);
 }
 
-// export const apiErrorHandler = (error: any) => {
-//   try {
-//     const err = error instanceof Error;
-//     const errorMessage = err.response?.data || "An unexpected error occurred.";
-//     if (err.response) {
-//       return { error: errorMessage, data:null, status: err.response.status };
-//     }
-//   } catch (err) {
-//     console.log(err, "serious problem");
-//     throw new Error("An unexpected error occurred.");
-//   }
-// };
+
+export class HttpError extends Error {
+  statusCode: number;
+
+  constructor(message: string, statusCode: number) {
+    super(message); // Call the parent Error class constructor
+    this.name = 'HttpError'; // Set the name of the error for identification
+    this.statusCode = statusCode;
+  }
+}
+export async function handleServerError(error: any) {
+  try {
+    // if (error && error.message === "Unauthorized") await logout();
+    if (axios.isAxiosError(error)) {
+      const response = error.response;
+      // if (response?.statusText === "Unauthorized" || response?.data.message === "Unauthorized") await logout();
+      if (response && response.data) {
+        const { message, statusCode } = response.data;
+        // Handle specific status code 409
+        if (statusCode !== 200) {
+          console.log("Conflict error: ", message);
+          return { message, statusCode };
+        }
+        return { message, statusCode };
+      }
+      if (error.code === "ECONNREFUSED") {
+        return { message: "Connection refused. Please try again later or contact support.", statusCode: 500 };
+      }
+    } else {
+      return { message: "Unknown server error, Please try again later or contact support.", statusCode: 500 };
+    }
+  } catch (catchError: any) {
+    return { message: catchError.message, statusCode: 500 };
+  }
+}

@@ -2,7 +2,6 @@ import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import CredentialProvider from "next-auth/providers/credentials";
 import { PrismaClient } from "@prisma/client";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { getErrorMessage } from "./lib/utils";
 
 const prisma = new PrismaClient();
@@ -50,5 +49,4 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
 
     Google,
   ],
-  adapter: PrismaAdapter(prisma),
 });

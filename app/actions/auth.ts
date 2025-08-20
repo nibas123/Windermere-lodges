@@ -1,7 +1,6 @@
 "use server";
 
 import { signIn, signOut } from "@/auth";
-import { getErrorMessage } from "@/lib/utils";
 
 export async function doSocialLogin(formData: any) {
   const action = formData.get("action");
