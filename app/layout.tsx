@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Toaster } from "react-hot-toast";
 import prisma from "@/lib/prisma";
 
 export const metadata: Metadata = {
@@ -20,7 +19,6 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Toaster position="bottom-center" />
         {children}
       </body>
     </html>
