@@ -15,10 +15,12 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { getErrorMessage } from "@/lib/utils";
-import { credentialLogin } from "@/app/actions/auth";
+
 
 const formSchema = z.object({
+    name: z.string().min(5,{
+    message: "Username contain alphanumerics.",
+  }),
   email: z.string().email({
     message: "Please enter a valid email address.",
   }),
@@ -27,36 +29,35 @@ const formSchema = z.object({
   }),
 });
 
-type loginType = Zod.infer<typeof formSchema>;
-export function LoginForm() {
+export function RegisterForm() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  const [error,setError] = useState('')
+  const [error, setError] = useState('');
 
-  const form = useForm<loginType>({
+  const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
+      name:"",
       password: "",
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    try {
-      setIsLoading(true)
-      const response = await credentialLogin(values);
 
-      if (response.user) {
-        router.push("/");
-      } else {
-        setError(response.error.message);
-      }
+    try{
 
-    } catch (err) {
-      const e = getErrorMessage(err);
-      setError('Invalid credentials')
-    }finally{
-      setIsLoading(false);
+      const response = await fetch("http://localhost:3000/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body:JSON.stringify(values)
+      })
+
+      console.log(response);
+    }catch(e){
+      console.error(e)
     }
   }
 
@@ -65,17 +66,36 @@ export function LoginForm() {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <FormField
           control={form.control}
-          name="email"
+          name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input placeholder="Enter your email" {...field} />
+                <Input placeholder="Enter a username" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
+
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>email</FormLabel>
+              <FormControl>
+                <Input
+                  type="email"
+                  placeholder="Enter your email"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+  
         <FormField
           control={form.control}
           name="password"
@@ -94,7 +114,7 @@ export function LoginForm() {
           )}
         />
         <Button type="submit" className="w-full" disabled={isLoading}>
-          {isLoading ? "Logging in..." : "Login"}
+          {isLoading ? "creating account" : "Register"}
         </Button>
       </form>
     </Form>

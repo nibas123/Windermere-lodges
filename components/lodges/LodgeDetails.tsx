@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+"use client"
+=======
 "use client";
+>>>>>>> prisma
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
@@ -8,6 +12,12 @@ import { PageHeader } from "../page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+<<<<<<< HEAD
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
+import { format } from "date-fns";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+=======
 import {
   Popover,
   PopoverContent,
@@ -22,6 +32,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+>>>>>>> prisma
 import { cn } from "@/lib/utils";
 import { Icons } from "../ui/icons";
 import { type LucideIcon as Icon } from "lucide-react";
@@ -30,6 +41,35 @@ import { Star } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { VisuallyHidden } from "../ui/visually-hidden";
 import { galleryImagesByLodge } from "../gallery/gallery-data";
+<<<<<<< HEAD
+import { ChatbotButton } from "@/components/chatbot/chatbot-button"
+
+const amenityIconMap: Record<string, string> = {
+  'Lake Access': '/icons/water.png',
+  'Wifi': '/icons/wifi.png',
+  'Shared Pool': '/icons/swim.png',
+  'Washing Machine': '/icons/w_machine.png',
+  'Hair Dryer': '/icons/dryer.png',
+  'Kitchen': '/icons/cook.png',
+  'TV': '/icons/tv.png',
+};
+
+const policyIconMap: Record<string, keyof typeof Icons> = {
+  'Check-in & Check-out': 'calendarClock',
+  'Cancellation Policy': 'ban',
+  'Property Maintenance & Damage Policy': 'wrench',
+};
+
+const amenitiesToDisplay = [
+  'Lake Access',
+  'Wifi',
+  'Shared Pool',
+  'Washing Machine',
+  'Hair Dryer',
+  'Kitchen',
+  'TV',
+  '+11 More',
+=======
 import { ChatbotButton } from "@/components/chatbot/chatbot-button";
 
 const amenityIconMap: Record<string, string> = {
@@ -57,10 +97,26 @@ const amenitiesToDisplay = [
   "Kitchen",
   "TV",
   "+11 More",
+>>>>>>> prisma
 ];
 
 const ratingSummary = {
   average: 4.0,
+<<<<<<< HEAD
+  label: 'Very Good',
+  total: 250,
+  breakdown: [
+    { stars: 5, label: 'Excellent', count: 100, color: 'bg-green-700' },
+    { stars: 4, label: 'Very Good', count: 74, color: 'bg-green-600' },
+    { stars: 3, label: 'Good', count: 53, color: 'bg-green-400' },
+    { stars: 2, label: 'Average', count: 10, color: 'bg-orange-400' },
+    { stars: 1, label: 'Poor', count: 13, color: 'bg-red-600' },
+  ],
+};
+const maxCount = Math.max(...ratingSummary.breakdown.map(b => b.count));
+
+function Gallery({ images, lodgeName }: { images: string[]; lodgeName: string }) {
+=======
   label: "Very Good",
   total: 250,
   breakdown: [
@@ -80,16 +136,21 @@ function Gallery({
   images: string[];
   lodgeName: string;
 }) {
+>>>>>>> prisma
   const [current, setCurrent] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
   const total = images.length;
   const handlePrev = () => setCurrent((prev) => (prev - 1 + total) % total);
   const handleNext = () => setCurrent((prev) => (prev + 1) % total);
   const handleThumbClick = (idx: number) => setCurrent(idx);
+<<<<<<< HEAD
+  const openModal = (idx: number) => { setCurrent(idx); setModalOpen(true); };
+=======
   const openModal = (idx: number) => {
     setCurrent(idx);
     setModalOpen(true);
   };
+>>>>>>> prisma
 
   // Keyboard navigation in modal
   useEffect(() => {
@@ -122,6 +183,9 @@ function Gallery({
             onClick={handlePrev}
             aria-label="Previous image"
           >
+<<<<<<< HEAD
+            <svg width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#fff"/><path d="M15 18l-6-6" stroke="#374151" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+=======
             <svg
               className="w-6 h-6 text-gray-800 dark:text-white"
               aria-hidden="true"
@@ -140,6 +204,7 @@ function Gallery({
                 d="m15 19-7-7 7-7"
               />
             </svg>
+>>>>>>> prisma
           </button>
         )}
         {/* Right Arrow */}
@@ -149,6 +214,15 @@ function Gallery({
             onClick={handleNext}
             aria-label="Next image"
           >
+<<<<<<< HEAD
+            <svg width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#fff"/><path d="M9 6l6 6-6 6" stroke="#374151" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </button>
+        )}
+        {/* View Larger Image Button */}
+        <button className="absolute left-3 bottom-3 bg-white opacity-65 text-gray-800 rounded shadow px-3 py-2 text-sm flex items-center gap-2 border border-gray-200 hover:bg-gray-100 z-10 hover:opacity-80" onClick={() => openModal(current)}>
+          <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+          
+=======
             <svg
               className="w-6 h-6 text-gray-800 dark:text-white"
               aria-hidden="true"
@@ -185,6 +259,7 @@ function Gallery({
             <circle cx="11" cy="11" r="7" />
             <path d="M21 21l-4.35-4.35" />
           </svg>
+>>>>>>> prisma
         </button>
         {/* Image Count */}
         <div className="absolute right-3 bottom-3 bg-black/80 text-white rounded px-3 py-1 text-sm z-10 font-semibold">
@@ -197,6 +272,10 @@ function Gallery({
               <DialogTitle>Gallery images for {lodgeName}</DialogTitle>
             </VisuallyHidden>
             {/* Add DialogTitle for accessibility, hidden visually */}
+<<<<<<< HEAD
+            <h2 id="gallery-dialog-title" className="sr-only">Gallery images for {lodgeName}</h2>
+            <div className="relative w-full flex items-center justify-center" style={{ minHeight: 500 }}>
+=======
             <h2 id="gallery-dialog-title" className="sr-only">
               Gallery images for {lodgeName}
             </h2>
@@ -204,6 +283,7 @@ function Gallery({
               className="relative w-full flex items-center justify-center"
               style={{ minHeight: 500 }}
             >
+>>>>>>> prisma
               {/* Left Arrow */}
               {total > 1 && (
                 <button
@@ -211,6 +291,9 @@ function Gallery({
                   onClick={handlePrev}
                   aria-label="Previous image"
                 >
+<<<<<<< HEAD
+                  <svg width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+=======
                   <svg
                     width="32"
                     height="32"
@@ -221,12 +304,17 @@ function Gallery({
                   >
                     <path d="M15 18l-6-6 6-6" />
                   </svg>
+>>>>>>> prisma
                 </button>
               )}
               {/* Main Zoomed Image */}
               <Image
                 src={images[current]}
+<<<<<<< HEAD
+                alt={lodgeName + 'zoomed'}
+=======
                 alt={lodgeName + "zoomed"}
+>>>>>>> prisma
                 width={1200}
                 height={800}
                 className="object-contain max-h-[80vh] w-auto mx-auto rounded"
@@ -239,6 +327,9 @@ function Gallery({
                   onClick={handleNext}
                   aria-label="Next image"
                 >
+<<<<<<< HEAD
+                  <svg width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+=======
                   <svg
                     width="32"
                     height="32"
@@ -249,6 +340,7 @@ function Gallery({
                   >
                     <path d="M9 6l6 6-6 6" />
                   </svg>
+>>>>>>> prisma
                 </button>
               )}
               {/* Image Count */}
@@ -261,17 +353,29 @@ function Gallery({
               {images.map((img, idx) => (
                 <button
                   key={img + idx}
+<<<<<<< HEAD
+                  className={`relative rounded overflow-hidden border-2 ${idx === current ? 'border-emerald-600' : 'border-transparent'}`}
+=======
                   className={`relative rounded overflow-hidden border-2 ${
                     idx === current
                       ? "border-emerald-600"
                       : "border-transparent"
                   }`}
+>>>>>>> prisma
                   onClick={() => handleThumbClick(idx)}
                   tabIndex={0}
                   aria-label={`Show image ${idx + 1}`}
                 >
                   <Image
                     src={img}
+<<<<<<< HEAD
+                    alt={lodgeName + ' thumbnail'}
+                    width={80}
+                    height={60}
+                    className={`object-cover w-20 h-14 ${idx === current ? '' : 'opacity-80'}`}
+                  />
+                  {idx === current && <span className="absolute inset-0 ring-2 ring-emerald-600 rounded pointer-events-none"></span>}
+=======
                     alt={lodgeName + " thumbnail"}
                     width={80}
                     height={60}
@@ -282,6 +386,7 @@ function Gallery({
                   {idx === current && (
                     <span className="absolute inset-0 ring-2 ring-emerald-600 rounded pointer-events-none"></span>
                   )}
+>>>>>>> prisma
                 </button>
               ))}
             </div>
@@ -295,15 +400,28 @@ function Gallery({
         {(images.length > 0 ? images : ["/placeholder.jpg"]).map((img, idx) => (
           <button
             key={img + idx}
+<<<<<<< HEAD
+            className={`relative rounded overflow-hidden border-2 w-full min-h-[100px] aspect-[4/3] ${idx === current ? 'border-emerald-600' : 'border-transparent'}`}
+=======
             className={`relative rounded overflow-hidden border-2 w-full min-h-[100px] aspect-[4/3] ${
               idx === current ? "border-emerald-600" : "border-transparent"
             }`}
+>>>>>>> prisma
             onClick={() => handleThumbClick(idx)}
             tabIndex={0}
             aria-label={`Show image ${idx + 1}`}
           >
             <Image
               src={img}
+<<<<<<< HEAD
+              alt={lodgeName + ' thumbnail'}
+              width={120}
+              height={90}
+              className={`object-cover w-full h-full ${idx === current ? '' : 'opacity-80'}`}
+              onError={(e) => { (e.target as HTMLImageElement).src = '/placeholder.jpg'; }}
+            />
+            {idx === current && <span className="absolute inset-0 ring-2 ring-emerald-600 rounded pointer-events-none"></span>}
+=======
               alt={lodgeName + " thumbnail"}
               width={120}
               height={90}
@@ -317,6 +435,7 @@ function Gallery({
             {idx === current && (
               <span className="absolute inset-0 ring-2 ring-emerald-600 rounded pointer-events-none"></span>
             )}
+>>>>>>> prisma
           </button>
         ))}
       </div>
@@ -327,7 +446,13 @@ function Gallery({
 export function LodgeDetails({ lodge }: { lodge: any }) {
   const router = useRouter();
   const [showFAQ, setShowFAQ] = useState<number | null>(null);
+<<<<<<< HEAD
+  const [checkInDate, setCheckInDate] = useState<Date | undefined>(
+    new Date("2025-10-07T00:00:00")
+  );
+=======
   const [checkInDate, setCheckInDate] = useState<Date | undefined>(new Date());
+>>>>>>> prisma
   const [checkOutDate, setCheckOutDate] = useState<Date | undefined>(
     new Date("2025-10-12T00:00:00")
   );
@@ -342,6 +467,11 @@ export function LodgeDetails({ lodge }: { lodge: any }) {
       ? "lodge3"
       : null;
 
+<<<<<<< HEAD
+  const galleryImages =
+    (lodgeKey && galleryImagesByLodge[lodgeKey]?.map(img => img.src)) ||
+    [lodge.image, "/placeholder.jpg", "/placeholder-user.jpg", "/activities/4.png"];
+=======
   const galleryImages = (lodgeKey &&
     galleryImagesByLodge[lodgeKey]?.map((img) => img.src)) || [
     lodge.image,
@@ -349,6 +479,7 @@ export function LodgeDetails({ lodge }: { lodge: any }) {
     "/placeholder-user.jpg",
     "/activities/4.png",
   ];
+>>>>>>> prisma
 
   return (
     <>
@@ -361,19 +492,26 @@ export function LodgeDetails({ lodge }: { lodge: any }) {
       <div className="max-w-6xl mx-auto p-4 sm:p-6 lg:p-8 mt-18">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8">
           <div className="flex items-center gap-4">
+<<<<<<< HEAD
+            <Button variant="outline" size="icon" className="h-10 w-10 bg-white" onClick={() => router.push('/our-lodges')}>
+=======
             <Button
               variant="outline"
               size="icon"
               className="h-10 w-10 bg-white"
               onClick={() => router.push("/our-lodges")}
             >
+>>>>>>> prisma
               <Icons.chevronLeft className="h-6 w-6" />
             </Button>
             <div>
               <h1 className="text-2xl font-bold tracking-tight sm:text-3xl text-gray-800">
                 {lodge.name}
               </h1>
+<<<<<<< HEAD
+=======
 
+>>>>>>> prisma
               <p className="text-sm text-gray-600">{lodge.address}</p>
             </div>
           </div>
@@ -401,6 +539,10 @@ export function LodgeDetails({ lodge }: { lodge: any }) {
                 <div className="flex items-baseline gap-2 mb-4">
                   <span className="text-3xl font-bold">${lodge.price}.00</span>
                   <span className="text-sm text-gray-500">/per night</span>
+<<<<<<< HEAD
+                  <span className="line-through text-gray-400 ml-auto">${lodge.oldPrice}</span>
+                  <Badge variant="destructive" className="bg-green-600 text-white">60% off</Badge>
+=======
                   <span className="line-through text-gray-400 ml-auto">
                     ${lodge.oldPrice}
                   </span>
@@ -410,6 +552,7 @@ export function LodgeDetails({ lodge }: { lodge: any }) {
                   >
                     60% off
                   </Badge>
+>>>>>>> prisma
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 mb-4">
@@ -424,11 +567,15 @@ export function LodgeDetails({ lodge }: { lodge: any }) {
                             !checkInDate && "text-muted-foreground"
                           )}
                         >
+<<<<<<< HEAD
+                          {checkInDate ? format(checkInDate, "LLL dd, yyyy") : <span>Pick a date</span>}
+=======
                           {checkInDate ? (
                             format(checkInDate, "LLL dd, yyyy")
                           ) : (
                             <span>Pick a date</span>
                           )}
+>>>>>>> prisma
                         </Button>
                       </PopoverTrigger>
                       <PopoverContent className="w-auto p-0">
@@ -452,11 +599,15 @@ export function LodgeDetails({ lodge }: { lodge: any }) {
                             !checkOutDate && "text-muted-foreground"
                           )}
                         >
+<<<<<<< HEAD
+                          {checkOutDate ? format(checkOutDate, "LLL dd, yyyy") : <span>Pick a date</span>}
+=======
                           {checkOutDate ? (
                             format(checkOutDate, "LLL dd, yyyy")
                           ) : (
                             <span>Pick a date</span>
                           )}
+>>>>>>> prisma
                         </Button>
                       </PopoverTrigger>
                       <PopoverContent className="w-auto p-0">
@@ -480,6 +631,13 @@ export function LodgeDetails({ lodge }: { lodge: any }) {
                     <SelectContent>
                       <SelectItem value="1-adult">1 Adult</SelectItem>
                       <SelectItem value="2-adults">2 Adults</SelectItem>
+<<<<<<< HEAD
+                      <SelectItem value="2-adults-1-children">2 Adults, 1 Children</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                
+=======
                       <SelectItem value="2-adults-1-children">
                         2 Adults, 1 Children
                       </SelectItem>
@@ -487,6 +645,7 @@ export function LodgeDetails({ lodge }: { lodge: any }) {
                   </Select>
                 </div>
 
+>>>>>>> prisma
                 {/* DISCOUNT AND OFFER CODE TO BE APPLIED ON CLIENT's CONFIRMATION */}
                 {/* <div className="flex flex-col gap-1 mb-4">
                   <label className="text-sm text-gray-500">Discount Code</label>
@@ -501,6 +660,10 @@ export function LodgeDetails({ lodge }: { lodge: any }) {
                   </Select>
                 </div> */}
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> prisma
                 <div className="border-t my-4" />
 
                 <div className="flex flex-col gap-2">
@@ -521,9 +684,13 @@ export function LodgeDetails({ lodge }: { lodge: any }) {
                     <span>${lodge.price * 5 - lodge.price + 5}</span>
                   </div>
                 </div>
+<<<<<<< HEAD
+                <Button className="w-full mt-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 text-base">Book Now</Button>
+=======
                 <Button className="w-full mt-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 text-base">
                   Book Now
                 </Button>
+>>>>>>> prisma
               </CardContent>
             </Card>
           </div>
@@ -535,6 +702,27 @@ export function LodgeDetails({ lodge }: { lodge: any }) {
             <h2 className="text-2xl font-bold mb-4">Amenities</h2>
             <div className="flex space-x-6 overflow-x-auto pb-4">
               {amenitiesToDisplay.map((amenity: string, i: number) => {
+<<<<<<< HEAD
+                const iconKey = Object.keys(amenityIconMap).find(key => amenity.toLowerCase().includes(key.toLowerCase()));
+                const iconSrc = iconKey ? amenityIconMap[iconKey] : null;
+
+                if (amenity.startsWith('+')) {
+                  return (
+                    <div key={i} className="flex items-center space-x-2 flex-shrink-0">
+                       <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
+                         <span className="text-sm font-semibold">{amenity.split(' ')[0]}</span>
+                       </div>
+                       <span className="text-gray-700">{amenity.split(' ').slice(1).join(' ')}</span>
+                    </div>
+                  )
+                }
+                
+                return (
+                  <div key={i} className="flex items-center space-x-2 flex-shrink-0">
+                    {iconSrc && (
+                      <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
+                        <Image src={iconSrc} alt={amenity} width={24} height={24} />
+=======
                 const iconKey = Object.keys(amenityIconMap).find((key) =>
                   amenity.toLowerCase().includes(key.toLowerCase())
                 );
@@ -571,6 +759,7 @@ export function LodgeDetails({ lodge }: { lodge: any }) {
                           width={24}
                           height={24}
                         />
+>>>>>>> prisma
                       </div>
                     )}
                     <span className="text-gray-700">{amenity}</span>
@@ -587,6 +776,9 @@ export function LodgeDetails({ lodge }: { lodge: any }) {
           {/* Location */}
           <div className="mb-8">
             <h2 className="text-2xl font-bold mb-4">Location</h2>
+<<<<<<< HEAD
+            <iframe src={lodge.locationMap} width="100%" height="350" className="rounded-xl border" loading="lazy"></iframe>
+=======
             <iframe
               src={lodge.locationMap}
               width="100%"
@@ -594,6 +786,7 @@ export function LodgeDetails({ lodge }: { lodge: any }) {
               className="rounded-xl border"
               loading="lazy"
             ></iframe>
+>>>>>>> prisma
           </div>
           {/* Rating & Review */}
           <div className="mb-8">
@@ -606,25 +799,40 @@ export function LodgeDetails({ lodge }: { lodge: any }) {
                   <Star className="inline-block w-3 h-4 fill-white text-white ml-1" />
                 </span>
                 <div className="flex flex-col justify-center ml-4">
+<<<<<<< HEAD
+                  <span className="font-bold text-gray-800 text-md leading-tight">{ratingSummary.label}</span>
+                  <span className="text-sm text-green-700 leading-tight">{ratingSummary.total} ratings</span>
+=======
                   <span className="font-bold text-gray-800 text-md leading-tight">
                     {ratingSummary.label}
                   </span>
                   <span className="text-sm text-green-700 leading-tight">
                     {ratingSummary.total} ratings
                   </span>
+>>>>>>> prisma
                 </div>
               </div>
               {/* Breakdown Bars */}
               <div className="flex-1 grid grid-cols-1 md:grid-cols-5 gap-4">
                 {ratingSummary.breakdown.map((b) => (
+<<<<<<< HEAD
+                  <div key={b.stars} className="flex flex-col items-center w-full">
+=======
                   <div
                     key={b.stars}
                     className="flex flex-col items-center w-full"
                   >
+>>>>>>> prisma
                     <div className="flex items-center gap-1 mb-1">
                       <span className="font-bold text-gray-700">{b.stars}</span>
                       <span className="text-gray-500">★</span>
                       <span className="text-xs text-gray-500">({b.label})</span>
+<<<<<<< HEAD
+                      <span className="ml-2 font-bold text-gray-700">{b.count}</span>
+                    </div>
+                    <div className="w-full h-2 rounded bg-gray-200 flex items-center">
+                      <div className={`${b.color} h-2 rounded`} style={{ width: `${(b.count / maxCount) * 100}%` }} />
+=======
                       <span className="ml-2 font-bold text-gray-700">
                         {b.count}
                       </span>
@@ -634,6 +842,7 @@ export function LodgeDetails({ lodge }: { lodge: any }) {
                         className={`${b.color} h-2 rounded`}
                         style={{ width: `${(b.count / maxCount) * 100}%` }}
                       />
+>>>>>>> prisma
                     </div>
                   </div>
                 ))}
@@ -645,6 +854,12 @@ export function LodgeDetails({ lodge }: { lodge: any }) {
             <h2 className="text-2xl font-bold mb-4">Rules & Policies</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {lodge.policies.map((policy: any, i: number) => {
+<<<<<<< HEAD
+                const IconComponent = Icons[policyIconMap[policy.label]] as Icon;
+                return (
+                  <div key={i} className="flex items-start gap-4">
+                    {IconComponent && <IconComponent className="h-8 w-8 text-emerald-600 mt-1" />}
+=======
                 const IconComponent = Icons[
                   policyIconMap[policy.label]
                 ] as Icon;
@@ -653,6 +868,7 @@ export function LodgeDetails({ lodge }: { lodge: any }) {
                     {IconComponent && (
                       <IconComponent className="h-8 w-8 text-emerald-600 mt-1" />
                     )}
+>>>>>>> prisma
                     <div>
                       <h3 className="font-bold text-sm">{policy.label}</h3>
                       <p className="text-gray-800 font-light">{policy.value}</p>
@@ -673,6 +889,9 @@ export function LodgeDetails({ lodge }: { lodge: any }) {
                     onClick={() => setShowFAQ(i === showFAQ ? null : i)}
                   >
                     {faq.q}
+<<<<<<< HEAD
+                    <span className={`ml-2 transition-transform ${showFAQ === i ? 'rotate-90' : ''}`}>▶</span>
+=======
                     <span
                       className={`ml-2 transition-transform ${
                         showFAQ === i ? "rotate-90" : ""
@@ -680,6 +899,7 @@ export function LodgeDetails({ lodge }: { lodge: any }) {
                     >
                       ▶
                     </span>
+>>>>>>> prisma
                   </button>
                   {showFAQ === i && (
                     <div className="text-gray-700 pb-3 pl-2">{faq.a}</div>
@@ -694,4 +914,8 @@ export function LodgeDetails({ lodge }: { lodge: any }) {
       <ChatbotButton />
     </>
   );
+<<<<<<< HEAD
+} 
+=======
 }
+>>>>>>> prisma

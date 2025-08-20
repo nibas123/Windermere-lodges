@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { auth } from "@/auth"
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
