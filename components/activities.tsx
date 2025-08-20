@@ -1,35 +1,13 @@
-<<<<<<< HEAD
-'use client';
-
-import Image from "next/image"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Calendar, ArrowRight } from "lucide-react"
-import { Badge } from '@/components/ui/badge'
-=======
 "use client";
 
 import Image from "next/image";
 import {
   Card,
 } from "@/components/ui/card";
->>>>>>> prisma
 
 const activities = [
   {
     title: "Lake Cruises",
-<<<<<<< HEAD
-    image: "https://images.unsplash.com/photo-1516132006923-6cf348e5dee2?q=80&w=2070&auto=format&fit=crop",
-  },
-  {
-    title: "Hiking Trails",
-    image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-  },
-  {
-    title: "Kayaking",
-    image: "https://images.unsplash.com/photo-1530866495561-507c9faab2ed?q=80&w=2070&auto=format&fit=crop",
-=======
     image:
       "https://images.unsplash.com/photo-1516132006923-6cf348e5dee2?q=80&w=2070&auto=format&fit=crop",
   },
@@ -42,76 +20,29 @@ const activities = [
     title: "Kayaking",
     image:
       "https://images.unsplash.com/photo-1530866495561-507c9faab2ed?q=80&w=2070&auto=format&fit=crop",
->>>>>>> prisma
   },
   {
     title: "Treking",
     image: "activities/4.png",
   },
-<<<<<<< HEAD
-]
-// const activities = [
-//   {
-//     title: "Lake Cruises",
-//     description: "Explore the beauty of Lake Windermere with scenic boat tours",
-//     image: "https://images.unsplash.com/photo-1516132006923-6cf348e5dee2?q=80&w=2070&auto=format&fit=crop",
-//     location: "Bowness Bay",
-//     season: "Year-round",
-//     duration: "2-3 hours",
-//     difficulty: "Easy"
-//   },
-//   {
-//     title: "Hiking Trails",
-//     description: "Discover breathtaking views on the region's most scenic trails",
-//     image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
-//     location: "Various locations",
-//     season: "Spring-Autumn",
-//     duration: "3-6 hours",
-//     difficulty: "Moderate"
-//   },
-//   {
-//     title: "Water Sports",
-//     description: "Try kayaking, paddleboarding, and other exciting water activities",
-//     image: "https://images.unsplash.com/photo-1530866495561-507c9faab2ed?q=80&w=2070&auto=format&fit=crop",
-//     location: "Windermere Lake",
-//     season: "Summer",
-//     duration: "1-2 hours",
-//     difficulty: "Easy"
-//   },
-// ]
-=======
 ];
->>>>>>> prisma
 
 export const Activities = () => {
   return (
     <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-<<<<<<< HEAD
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Explore the Lake District</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Discover a wide range of activities and attractions in the stunning Lake District National Park
-=======
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Explore the Lake District
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Discover a wide range of activities and attractions in the stunning
             Lake District National Park
->>>>>>> prisma
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {activities.map((activity, index) => (
-<<<<<<< HEAD
-            <Card key={index} className="overflow-hidden border-0 shadow-lg group relative cursor-pointer">
-              <div className="relative h-64">
-                <Image src={activity.image || "/placeholder.svg"} alt={activity.title} fill className="object-cover transition-transform duration-300 group-hover:scale-105" />
-                <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="w-full text-white text-2xl font-bold p-6 text-center">{activity.title}</span>
-=======
             <Card
               key={index}
               className="overflow-hidden border-0 shadow-lg group relative cursor-pointer"
@@ -133,7 +64,6 @@ export const Activities = () => {
                     fuga excepturi error assumenda itaque est odio nobis iusto
                     natus ut repellat. Animi, vel?
                   </span>
->>>>>>> prisma
                 </div>
               </div>
             </Card>
@@ -189,11 +119,5 @@ export const Activities = () => {
         </div> */}
       </div>
     </section>
-<<<<<<< HEAD
-  )
-}
-
-=======
   );
 };
->>>>>>> prisma

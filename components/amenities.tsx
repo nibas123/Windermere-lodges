@@ -1,97 +1,105 @@
-'use client';
+"use client";
 
-import { Wifi, Tv, Coffee, Utensils, Car, Waves, DumbbellIcon, Gamepad } from 'lucide-react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import {
+  Wifi,
+  Tv,
+  Coffee,
+  Utensils,
+  Car,
+  Waves,
+  DumbbellIcon,
+  Gamepad,
+} from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import lakeAccess from "../public/icons/Access to the lake.svg";
+import beerGarden from "../public/icons/Beer Garden.svg";
+import wifi from "../public/icons/wifi.svg";
+import shop from "../public/icons/Convenience Shop.svg";
+import swim from "../public/icons/pool.svg";
+import launderette from "../public/icons/Launderette.svg";
+import park from "../public/icons/park.svg";
+import picnic from "../public/icons/Picnic Areas.svg";
+import woodland from "../public/icons/Woodland walks.svg";
+import takeaway from "../public/icons/takeaway.svg";
+
+
+import Image from "next/image";
 
 const amenities = [
   {
-    icon: Wifi,
-    title: 'High-Speed WiFi',
-    description: 'Stay connected with complimentary high-speed internet access',
+    icon: lakeAccess,
+    title: "Lake view",
   },
   {
-    icon: Tv,
-    title: 'Smart Entertainment',
-    description: 'Smart TVs with streaming services in every lodge',
+    icon: woodland,
+    title: "Woodland walks",
   },
   {
-    icon: Coffee,
-    title: 'Coffee Station',
-    description: 'Premium coffee makers with complimentary coffee and tea',
+    icon: beerGarden,
+    title: "Beer garden",
   },
   {
-    icon: Utensils,
-    title: 'Fully Equipped Kitchen',
-    description: 'Modern appliances and all necessary cooking utensils',
+    icon: park,
+    title: "Park",
   },
   {
-    icon: Car,
-    title: 'Private Parking',
-    description: 'Secure parking space for each lodge',
+    icon: wifi,
+    title: "Wifi",
   },
   {
-    icon: Waves,
-    title: 'Hot Tub',
-    description: 'Private hot tub with stunning views',
+    icon: takeaway,
+    title: "Takeaway",
   },
   {
-    icon: DumbbellIcon,
-    title: 'Fitness Center',
-    description: 'State-of-the-art fitness equipment',
+    icon: shop,
+    title: "Convenience store",
   },
   {
-    icon: Gamepad,
-    title: 'Game Room',
-    description: 'Family entertainment with various games',
-  },
-<<<<<<< HEAD
-=======
-    {
-    icon: DumbbellIcon,
-    title: 'Fitness Center',
-    description: 'State-of-the-art fitness equipment',
+    icon: picnic,
+    title: "Picnic spots",
   },
   {
-    icon: Gamepad,
-    title: 'Game Room',
-    description: 'Family entertainment with various games',
+    icon: swim,
+    title: "Heated pool",
   },
->>>>>>> prisma
+  {
+    icon: launderette,
+    title: "Launderette",
+  },
 ];
 
 export const Amenities = () => {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16">
       <div className="container mx-auto px-4">
-<<<<<<< HEAD
-        <h2 className="text-3xl font-bold text-center mb-8">Lodge Amenities</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-=======
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">Our Facilities</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
+          Our Facilities
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
->>>>>>> prisma
           {amenities.map((amenity, index) => {
             const Icon = amenity.icon;
             return (
               <Card key={index}>
                 <CardHeader>
-<<<<<<< HEAD
-                  <Icon className="h-8 w-8 text-emerald-600 mb-2" />
-                  <CardTitle>{amenity.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription>{amenity.description}</CardDescription>
-                </CardContent>
-=======
-                  <Icon className="h-12 w-12 text-emerald-600 mb-2" />
+                  {/* <Icon className="h-12 w-12 text-emerald-600 mb-2" /> */}
+                  {amenity.icon && (
+                    <Image
+                      src={amenity.icon}
+                      className="h-16 w-16 text-emerald-600 mb-2"
+                      alt="icons"
+                    />
+                  )}
                   <CardTitle>{amenity.title}</CardTitle>
                 </CardHeader>
                 {/* <CardContent>
                   <CardDescription>{amenity.description}</CardDescription>
                 </CardContent> */}
->>>>>>> prisma
               </Card>
             );
           })}
@@ -106,4 +114,3 @@ export const Amenities = () => {
     </section>
   );
 };
-
