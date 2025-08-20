@@ -46,8 +46,6 @@ const amenities = [
     title: 'Game Room',
     description: 'Family entertainment with various games',
   },
-<<<<<<< HEAD
-=======
     {
     icon: DumbbellIcon,
     title: 'Fitness Center',
@@ -58,40 +56,25 @@ const amenities = [
     title: 'Game Room',
     description: 'Family entertainment with various games',
   },
->>>>>>> prisma
 ];
 
 export const Amenities = () => {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-<<<<<<< HEAD
-        <h2 className="text-3xl font-bold text-center mb-8">Lodge Amenities</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-=======
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">Our Facilities</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
->>>>>>> prisma
           {amenities.map((amenity, index) => {
             const Icon = amenity.icon;
             return (
               <Card key={index}>
                 <CardHeader>
-<<<<<<< HEAD
-                  <Icon className="h-8 w-8 text-emerald-600 mb-2" />
-                  <CardTitle>{amenity.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription>{amenity.description}</CardDescription>
-                </CardContent>
-=======
                   <Icon className="h-12 w-12 text-emerald-600 mb-2" />
                   <CardTitle>{amenity.title}</CardTitle>
                 </CardHeader>
                 {/* <CardContent>
                   <CardDescription>{amenity.description}</CardDescription>
                 </CardContent> */}
->>>>>>> prisma
               </Card>
             );
           })}
