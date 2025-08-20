@@ -9,10 +9,12 @@ export async function POST(request: Request) {
 
   try {
     const response = await createUser({ name, email, password });
-    console.log(response,"8888")
-    return new NextResponse("user registered successfully", { status: 201 });
-  } catch (e:any) {
-    
-    return new NextResponse(e.message, { status: 409 });
+    return NextResponse.json({
+      message: "user registered successfully",
+      status: 201,
+      ok: true,
+    });
+  } catch (e: any) {
+    return NextResponse.json({ message: e.message, status: 409, ok: false});
   }
 }

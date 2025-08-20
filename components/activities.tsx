@@ -1,29 +1,35 @@
 "use client";
 
 import Image from "next/image";
-import {
-  Card,
-} from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 
 const activities = [
   {
     title: "Lake Cruises",
     image:
       "https://images.unsplash.com/photo-1516132006923-6cf348e5dee2?q=80&w=2070&auto=format&fit=crop",
+    description:
+      "Staying with us means you’re minutes away from the Lake District’s most iconic gems! Wander the charming streets of Windermere & Bowness, step into the world of Beatrix Potter, or hike historic trails in Grasmere and Coniston. Discover Keswick’s adventure spirit, cruise stunning lakes, or tour grand National Trust estates and castles. From literary heritage to outdoor thrills, shopping, dining, and family fun – every day brings a new adventure right on your doorstep.",
   },
   {
     title: "Hiking Trails",
     image:
       "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop",
+    description:
+      "Staying with us means you’re minutes away from the Lake District’s most iconic gems! Wander the charming streets of Windermere & Bowness, step into the world of Beatrix Potter, or hike historic trails in Grasmere and Coniston. Discover Keswick’s adventure spirit, cruise stunning lakes, or tour grand National Trust estates and castles. From literary heritage to outdoor thrills, shopping, dining, and family fun – every day brings a new adventure right on your doorstep.",
   },
   {
     title: "Kayaking",
     image:
       "https://images.unsplash.com/photo-1530866495561-507c9faab2ed?q=80&w=2070&auto=format&fit=crop",
+    description:
+      "Staying with us means you’re minutes away from the Lake District’s most iconic gems! Wander the charming streets of Windermere & Bowness, step into the world of Beatrix Potter, or hike historic trails in Grasmere and Coniston. Discover Keswick’s adventure spirit, cruise stunning lakes, or tour grand National Trust estates and castles. From literary heritage to outdoor thrills, shopping, dining, and family fun – every day brings a new adventure right on your doorstep.",
   },
   {
-    title: "Treking",
+    title: "Family walks",
     image: "activities/4.png",
+    description:
+      "Staying with us means you’re minutes away from the Lake District’s most iconic gems! Wander the charming streets of Windermere & Bowness, step into the world of Beatrix Potter, or hike historic trails in Grasmere and Coniston. Discover Keswick’s adventure spirit, cruise stunning lakes, or tour grand National Trust estates and castles. From literary heritage to outdoor thrills, shopping, dining, and family fun – every day brings a new adventure right on your doorstep.",
   },
 ];
 
@@ -58,11 +64,8 @@ export const Activities = () => {
                   <span className="w-full text-white text-2xl font-bold p-6 text-center">
                     {activity.title}
                   </span>
-                  <span className="w-full text-white p-6 text-center">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Ratione et pariatur laudantium exercitationem, magni ea enim
-                    fuga excepturi error assumenda itaque est odio nobis iusto
-                    natus ut repellat. Animi, vel?
+                  <span className="w-full text-white px-2 text-center">
+                    {activity.description}
                   </span>
                 </div>
               </div>

@@ -1,6 +1,7 @@
 "use server";
 
 import { signIn, signOut } from "@/auth";
+import { HttpError } from "@/lib/utils";
 
 export async function doSocialLogin(formData: any) {
   const action = formData.get("action");
@@ -23,7 +24,7 @@ export async function credentialLogin(credentials: any) {
     return response;
   } catch (err) {
     console.log(err, "server actions")
-    throw new Error("something went wrong");
+    throw new HttpError("Something went wrong", 500);
   }
 }
 

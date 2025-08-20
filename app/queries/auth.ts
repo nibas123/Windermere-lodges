@@ -1,7 +1,7 @@
 "use server";
 
 import prisma from "@/lib/prisma";
-import { getErrorMessage, HttpError } from "@/lib/utils";
+import { HttpError } from "@/lib/utils";
 import { Prisma } from "@prisma/client";
 
 export async function createUser(userDetails: any) {

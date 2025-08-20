@@ -15,10 +15,10 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-
+import toast from "react-hot-toast";
 
 const formSchema = z.object({
-    name: z.string().min(5,{
+  name: z.string().min(5, {
     message: "Username contain alphanumerics.",
   }),
   email: z.string().email({
@@ -32,37 +32,43 @@ const formSchema = z.object({
 export function RegisterForm() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [isError, setIsError] = useState({
+    message: "",
+    status: 200,
+    ok: true,
+  });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
-      name:"",
+      name: "",
       password: "",
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-
-    try{
-
-      const response = await fetch("http://localhost:3000/api/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body:JSON.stringify(values)
-      })
-
-      console.log(response);
-    }catch(e){
-      console.error(e)
-    }
+    fetch("http://localhost:3000/api/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    })
+      .then((r) => r.json())
+      .then((r) => {
+        if (r.ok) {
+          toast.success(r.message);
+          router.push("/auth/login");
+        } else {
+          toast.error(r.message)
+        }
+      });
   }
 
   return (
     <Form {...form}>
+      {/* {isError && <p className="m-auto">{isError?.message}</p>} */}
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <FormField
           control={form.control}
@@ -85,17 +91,13 @@ export function RegisterForm() {
             <FormItem>
               <FormLabel>email</FormLabel>
               <FormControl>
-                <Input
-                  type="email"
-                  placeholder="Enter your email"
-                  {...field}
-                />
+                <Input type="email" placeholder="Enter your email" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-  
+
         <FormField
           control={form.control}
           name="password"

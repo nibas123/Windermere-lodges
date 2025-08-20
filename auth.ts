@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import CredentialProvider from "next-auth/providers/credentials";
 import { PrismaClient } from "@prisma/client";
-import { getErrorMessage } from "./lib/utils";
+import { getErrorMessage, HttpError } from "./lib/utils";
 
 const prisma = new PrismaClient();
 
@@ -35,14 +35,16 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
             if (user?.password === credentials.password) {
               return user
             }else{
-                throw new Error("User not found");
+                throw new HttpError("User not found", 404);
             }
 
           }
 
           return user;
+          
         } catch (err) {
-          throw new Error(getErrorMessage(err));
+          console.log(err)
+          throw new HttpError("something went wrong", 500)
         }
       },
     }),
