@@ -14,8 +14,8 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  // const peeps =  await prisma.user.findMany();
-  // console.log(peeps)
+  const peeps =  await prisma.user.findFirst();
+  console.log(peeps)
   return (
     <html lang="en">
       <body>
