@@ -11,11 +11,10 @@ import image2 from "../public/Main-banners/windermere2.jpg";
 import image3 from "../public/Main-banners/windermere3.jpg";
 import image4 from "../public/Main-banners/windermere4.jpg";
 
-// "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop",
-// "https://images.unsplash.com/photo-1464983953574-0892a716854b?q=80&w=1920&auto=format&fit=crop"
 const sliderImages = [image1, image2, image3, image4];
 
 export const Hero = () => {
+
   const heroRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const [current, setCurrent] = useState(0);
@@ -62,7 +61,8 @@ export const Hero = () => {
           alt="liliaz"
           key={idx}
           fill
-          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-700 ${
+          priority
+          className={`absolute inset-0 bg-cover bg-center bg-no-repeat brightness-[0.4] transition-opacity duration-700 ${
             idx === current ? "opacity-100 z-0" : "opacity-0 z-0"
           }`}
         />
@@ -119,7 +119,7 @@ export const Hero = () => {
               Explore Our Lodges
             </Button>
           </Link>
-          <Link href="/booking">
+          {/* <Link href="/booking">
             <Button
               size="lg"
               variant="outline"
@@ -127,7 +127,7 @@ export const Hero = () => {
             >
               Book Now <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-          </Link>
+          </Link> */}
         </div>
       </div>
 

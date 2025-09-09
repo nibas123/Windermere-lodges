@@ -1,13 +1,9 @@
 "use client"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
-import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { PageHeader } from "@/components/page-header"
-import { LoginForm } from "@/components/auth/login-form"
 import { SocialLogin } from "@/components/auth/social-login"
 import { ChatbotButton } from "@/components/chatbot/chatbot-button"
-import { useToast } from "@/hooks/use-toast"
 import { RegisterForm } from "@/components/auth/register-form"
 
 
@@ -15,7 +11,7 @@ export default function RegisterPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      <Navbar />
+      {/* <NavbarWrapper /> */}
       <PageHeader
         title="Register"
         description="Hey! welcome to windermere lodges"

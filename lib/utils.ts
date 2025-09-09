@@ -53,28 +53,62 @@ export class HttpError extends Error {
     this.statusCode = statusCode;
   }
 }
-export async function handleServerError(error: any) {
-  try {
-    // if (error && error.message === "Unauthorized") await logout();
-    if (axios.isAxiosError(error)) {
-      const response = error.response;
-      // if (response?.statusText === "Unauthorized" || response?.data.message === "Unauthorized") await logout();
-      if (response && response.data) {
-        const { message, statusCode } = response.data;
-        // Handle specific status code 409
-        if (statusCode !== 200) {
-          console.log("Conflict error: ", message);
-          return { message, statusCode };
-        }
-        return { message, statusCode };
-      }
-      if (error.code === "ECONNREFUSED") {
-        return { message: "Connection refused. Please try again later or contact support.", statusCode: 500 };
-      }
+
+
+type Resource = {
+  id: string;
+  type: string;
+  attributes?: Record<string, any>;
+  relationships?: Record<
+    string,
+    { data: { id: string; type: string } | { id: string; type: string }[] }
+  >;
+};
+
+export function hydrateResourceById(
+  id: string,
+  data: Resource[],
+  included: Resource[]
+): any | null {
+  // lookup table: "type-id" => resource
+  const includedMap = Object.fromEntries(
+    included.map((item) => [`${item.type}-${item.id}`, item])
+  );
+
+  function resolveRelationship(rel: any) {
+    if (!rel) return null;
+
+    if (Array.isArray(rel.data)) {
+      // to-many relationship
+      return rel.data.map((r:any) => {
+        const found = includedMap[`${r.type}-${r.id}`];
+        return found ? { ...r, ...found.attributes } : r;
+      });
     } else {
-      return { message: "Unknown server error, Please try again later or contact support.", statusCode: 500 };
+      // to-one relationship
+      const r = rel.data;
+      if (!r) return null;
+      const found = includedMap[`${r.type}-${r.id}`];
+      return found ? { ...r, ...found.attributes } : r;
     }
-  } catch (catchError: any) {
-    return { message: catchError.message, statusCode: 500 };
   }
+
+  // find the main resource
+  const item = data.find((d) => d.id === id);
+  if (!item) return null;
+
+  const hydrated: any = { ...item, attributes: { ...item.attributes } };
+
+  if (item.relationships) {
+    hydrated.relationships = Object.fromEntries(
+      Object.entries(item.relationships).map(([key, rel]) => [
+        key,
+        resolveRelationship(rel),
+      ])
+    );
+  }
+
+  return hydrated;
 }
+
+
